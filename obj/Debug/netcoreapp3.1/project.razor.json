@@ -1,5 +1,5 @@
 {
-  "FilePath": "g:\\NANDA\\Project\\RTMilenial\\RTMilenial.csproj",
+  "FilePath": "c:\\Users\\nanda.destyandana\\Documents\\Visual Studio Code\\RTMilenial\\RTMilenial\\RTMilenial.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -20521,73 +20521,73 @@
   "RootNamespace": "RTMilenial",
   "Documents": [
     {
-      "FilePath": "g:\\NANDA\\Project\\RTMilenial\\Views\\_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\NANDA\\Project\\RTMilenial\\Views\\KepalaKeluarga\\CreateKepalaKeluarga.cshtml",
-      "TargetPath": "Views\\KepalaKeluarga\\CreateKepalaKeluarga.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\NANDA\\Project\\RTMilenial\\Views\\KepalaKeluarga\\FetchKepalaKeluarga.cshtml",
+      "FilePath": "c:\\Users\\nanda.destyandana\\Documents\\Visual Studio Code\\RTMilenial\\RTMilenial\\Views\\KepalaKeluarga\\FetchKepalaKeluarga.cshtml",
       "TargetPath": "Views\\KepalaKeluarga\\FetchKepalaKeluarga.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "g:\\NANDA\\Project\\RTMilenial\\Views\\Shared\\_Layout.cshtml",
-      "TargetPath": "Views\\Shared\\_Layout.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\NANDA\\Project\\RTMilenial\\Views\\AnggotaKeluarga\\CreateAnggotaKeluarga.cshtml",
-      "TargetPath": "Views\\AnggotaKeluarga\\CreateAnggotaKeluarga.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\NANDA\\Project\\RTMilenial\\Views\\AnggotaKeluarga\\FetchAnggotaKeluarga.cshtml",
-      "TargetPath": "Views\\AnggotaKeluarga\\FetchAnggotaKeluarga.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\NANDA\\Project\\RTMilenial\\Views\\Shared\\Error.cshtml",
-      "TargetPath": "Views\\Shared\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\NANDA\\Project\\RTMilenial\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\NANDA\\Project\\RTMilenial\\Views\\AnggotaKeluarga\\DetailAnggotaKeluarga.cshtml",
-      "TargetPath": "Views\\AnggotaKeluarga\\DetailAnggotaKeluarga.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\NANDA\\Project\\RTMilenial\\Views\\_ViewStart.cshtml",
-      "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\NANDA\\Project\\RTMilenial\\Views\\Home\\Privacy.cshtml",
-      "TargetPath": "Views\\Home\\Privacy.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\NANDA\\Project\\RTMilenial\\Views\\KepalaKeluarga\\UpdateKepalaKeluarga.cshtml",
-      "TargetPath": "Views\\KepalaKeluarga\\UpdateKepalaKeluarga.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "g:\\NANDA\\Project\\RTMilenial\\Views\\AnggotaKeluarga\\UpdateAnggotaKeluarga.cshtml",
+      "FilePath": "c:\\Users\\nanda.destyandana\\Documents\\Visual Studio Code\\RTMilenial\\RTMilenial\\Views\\AnggotaKeluarga\\UpdateAnggotaKeluarga.cshtml",
       "TargetPath": "Views\\AnggotaKeluarga\\UpdateAnggotaKeluarga.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "g:\\NANDA\\Project\\RTMilenial\\Views\\Home\\Index.cshtml",
+      "FilePath": "c:\\Users\\nanda.destyandana\\Documents\\Visual Studio Code\\RTMilenial\\RTMilenial\\Views\\KepalaKeluarga\\UpdateKepalaKeluarga.cshtml",
+      "TargetPath": "Views\\KepalaKeluarga\\UpdateKepalaKeluarga.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\nanda.destyandana\\Documents\\Visual Studio Code\\RTMilenial\\RTMilenial\\Views\\AnggotaKeluarga\\FetchAnggotaKeluarga.cshtml",
+      "TargetPath": "Views\\AnggotaKeluarga\\FetchAnggotaKeluarga.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\nanda.destyandana\\Documents\\Visual Studio Code\\RTMilenial\\RTMilenial\\Views\\AnggotaKeluarga\\CreateAnggotaKeluarga.cshtml",
+      "TargetPath": "Views\\AnggotaKeluarga\\CreateAnggotaKeluarga.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\nanda.destyandana\\Documents\\Visual Studio Code\\RTMilenial\\RTMilenial\\Views\\AnggotaKeluarga\\DetailAnggotaKeluarga.cshtml",
+      "TargetPath": "Views\\AnggotaKeluarga\\DetailAnggotaKeluarga.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\nanda.destyandana\\Documents\\Visual Studio Code\\RTMilenial\\RTMilenial\\Views\\Shared\\Error.cshtml",
+      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\nanda.destyandana\\Documents\\Visual Studio Code\\RTMilenial\\RTMilenial\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\nanda.destyandana\\Documents\\Visual Studio Code\\RTMilenial\\RTMilenial\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\nanda.destyandana\\Documents\\Visual Studio Code\\RTMilenial\\RTMilenial\\Views\\KepalaKeluarga\\CreateKepalaKeluarga.cshtml",
+      "TargetPath": "Views\\KepalaKeluarga\\CreateKepalaKeluarga.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\nanda.destyandana\\Documents\\Visual Studio Code\\RTMilenial\\RTMilenial\\Views\\Shared\\_Layout.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\nanda.destyandana\\Documents\\Visual Studio Code\\RTMilenial\\RTMilenial\\Views\\_ViewStart.cshtml",
+      "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\nanda.destyandana\\Documents\\Visual Studio Code\\RTMilenial\\RTMilenial\\Views\\Home\\Privacy.cshtml",
+      "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\nanda.destyandana\\Documents\\Visual Studio Code\\RTMilenial\\RTMilenial\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
     }
   ],
