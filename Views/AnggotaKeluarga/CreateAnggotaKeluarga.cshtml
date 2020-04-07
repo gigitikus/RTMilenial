@@ -1,0 +1,186 @@
+@model RTMilenial.Models.AnggotaKeluarga;
+@{
+    ViewData["Title"] = "Tambah Anggota Keluarga";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+<div class="container-fluid">
+<div class="row mb-2">
+    <div class="col-sm-6">
+    <h1>Tambah Anggota Keluarga</h1>
+    </div>
+    <div class="col-sm-6">
+    <ol class="breadcrumb float-sm-right">
+        <li class="breadcrumb-item"><a href="#">Beranda</a></li>
+        <li class="breadcrumb-item active">Tambah Anggota Keluarga</li>
+    </ol>
+    </div>
+</div>
+</div><!-- /.container-fluid -->
+</section>
+
+@Html.AntiForgeryToken()
+<div class="content">
+    <div class="row">
+    <div class="col-sm-12">
+    @using (Html.BeginForm("CreateAnggotaKeluarga", "AnggotaKeluarga", 
+    FormMethod.Post))
+    {
+    <div class="card card-primary card-outline">
+        <div class="card-body">
+            <div class="row">
+                <table id="example2" class="table table-responsive table-hover" 
+                style="font-size: small;">
+                    <thead>
+                        <tr>
+                            <th>No. KK</th>
+                            <th>No.Urut</th>
+                            <th>Nama Lengkap</th>
+                            <th>NIK</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Tempat Lahir</th>
+                            <th>Tanggal Lahir</th>
+                            <th>Agama</th>
+                            <th>Pendidikan</th>
+                            <th>Pekerjaan</th>
+                            <th>Hubungan Keluarga</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in (IEnumerable<AnggotaKeluarga>)@ViewBag.lsAnggotaKeluarga)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(model => item.NoKk)</td>
+                                <td>@Html.DisplayFor(model => item.NoUrut)</td>
+                                <td>@Html.DisplayFor(model => item.NamaLengkap)</td>
+                                <td>@Html.DisplayFor(model => item.Nik)</td>
+                                <td>@Html.DisplayFor(model => item.JenisKelamin)</td>
+                                <td>@Html.DisplayFor(model => item.TempatLahir)</td>
+                                <td>@Convert.ToDateTime(item.TanggalLahir).ToString("dd-MM-yyyy")</td>
+                                <td>@Html.DisplayFor(model => item.Agama)</td>
+                                <td>@Html.DisplayFor(model => item.Pendidikan)</td>
+                                <td>@Html.DisplayFor(model => item.JenisPekerjaan)</td>
+                                <td>@Html.DisplayFor(model => item.HubunganDalamKeluarga)</td>
+                            </tr>   
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>    
+    <div class="card card-primary card-outline">
+        <div class="card-body">
+            @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+            <div class="row">
+                <div class="col-md-4">
+                    @Html.HiddenFor(model => model.NoKk, new { htmlAttributes = new {@value = @ViewBag.noKK}})
+                    <div class="form-group">
+                        <label for="NamaLengkap">Nama Lengkap</label>
+                        @Html.EditorFor(model => model.NamaLengkap, new { htmlAttributes = new {@class = "form-control"}})
+                        <span asp-validation-for="NamaLengkap" class="text-danger" style="font-size: small;"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="Nik">NIK</label>
+                        @Html.EditorFor(model => model.Nik, new { htmlAttributes = new {@class = "form-control"}})
+                        <span asp-validation-for="Nik" class="text-danger" style="font-size: small;"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="JenisKelamin">Jenis Kelamin</label>
+                        @* @Html.EditorFor(model => model.JenisKelamin, new { htmlAttributes = new {@class = "form-control"}}) *@
+                        @Html.DropDownListFor(model => model.JenisKelamin, 
+                        new SelectList(ViewBag.lsJenisKelamin, "JenisKelaminValue", "JenisKelaminDisplay"),
+                        new {@class="form-control select2"})
+                        <span asp-validation-for="JenisKelamin" class="text-danger" style="font-size: small;"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="TempatLahir">Tempat Lahir</label>
+                        @Html.EditorFor(model => model.TempatLahir, new { htmlAttributes = new {@class = "form-control"}})
+                        <span asp-validation-for="TempatLahir" class="text-danger" style="font-size: small;"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="TanggalLahir">Tanggal Lahir</label>
+                        @Html.EditorFor(model => model.TanggalLahir, new { htmlAttributes = new {@class = "form-control"}})
+                        <span asp-validation-for="TanggalLahir" class="text-danger" style="font-size: small;"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="Agama">Agama</label>
+                        @* @Html.EditorFor(model => model.Agama, new { htmlAttributes = new {@class = "form-control"}}) *@
+                        @Html.DropDownListFor(model => model.Agama, 
+                        new SelectList(ViewBag.lsAgama, "SelectValueMember", "SelectDisplayMember"),
+                        new {@class="form-control select2"})
+                        <span asp-validation-for="Agama" class="text-danger" style="font-size: small;"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="Pendidikan">Pendidikan</label>
+                        @* @Html.EditorFor(model => model.Pendidikan, new { htmlAttributes = new {@class = "form-control"}}) *@
+                        @Html.DropDownListFor(model => model.Pendidikan, 
+                        new SelectList(ViewBag.lsPendidikan, "SelectValueMember", "SelectDisplayMember"),
+                        new {@class="form-control select2"})
+                        <span asp-validation-for="Pendidikan" class="text-danger" style="font-size: small;"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="JenisPekerjaan">Jenis Pekerjaan</label>
+                        @* @Html.EditorFor(model => model.JenisPekerjaan, new { htmlAttributes = new {@class = "form-control"}}) *@
+                        @Html.DropDownListFor(model => model.JenisPekerjaan, 
+                        new SelectList(ViewBag.lsJenisPekerjaan, "SelectValueMember", "SelectDisplayMember"),
+                        new {@class="form-control select2"})
+                        <span asp-validation-for="JenisPekerjaan" class="text-danger" style="font-size: small;"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="StatusPerkawinan">Status Perkawinan</label>
+                        @* @Html.EditorFor(model => model.StatusPerkawinan, new { htmlAttributes = new {@class = "form-control"}}) *@
+                        @Html.DropDownListFor(model => model.StatusPerkawinan, 
+                        new SelectList(ViewBag.lsStatusKawin, "SelectValueMember", "SelectDisplayMember"),
+                        new {@class="form-control select2"})
+                        <span asp-validation-for="StatusPerkawinan" class="text-danger" style="font-size: small;"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="HubunganDalamKeluarga">Hubungan Dalam Keluarga</label>
+                        @* @Html.EditorFor(model => model.HubunganDalamKeluarga, new { htmlAttributes = new {@class = "form-control"}}) *@
+                        @Html.DropDownListFor(model => model.HubunganDalamKeluarga, 
+                        new SelectList(ViewBag.lsHubunganKeluarga, "SelectValueMember", "SelectDisplayMember"),
+                        new {@class="form-control select2"})
+                        <span asp-validation-for="HubunganDalamKeluarga" class="text-danger" style="font-size: small;"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="Kewarganegaraan">Kewarganegaraan</label>
+                        @* @Html.EditorFor(model => model.Kawarganegaraan, new { htmlAttributes = new {@class = "form-control"}}) *@
+                        @Html.DropDownListFor(model => model.Kawarganegaraan, 
+                        new SelectList(ViewBag.lsKewarganegaraan, "KewarganegaraanValue", "KewarganegaraanDisplay"),
+                        new {@class="form-control select2"})
+                    </div>
+                    <div class="form-group">
+                        <label for="NoPaspor">No. Paspor</label>
+                        @Html.EditorFor(model => model.NoPaspor, new { htmlAttributes = new {@class = "form-control"}})
+                    </div>
+                    <div class="form-group">
+                        <label for="NoKitas">No. Kitas</label>
+                        @Html.EditorFor(model => model.NoKitas, new { htmlAttributes = new {@class = "form-control"}})
+                    </div>
+                    <div class="form-group">
+                        <label for="Ayah">Ayah Kandung</label>
+                        @Html.EditorFor(model => model.Ayah, new { htmlAttributes = new {@class = "form-control"}})
+                        <span asp-validation-for="Ayah" class="text-danger" style="font-size: small;"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="Ibu">Ibu Kandung</label>
+                        @Html.EditorFor(model => model.Ibu, new { htmlAttributes = new {@class = "form-control"}})
+                        <span asp-validation-for="Ibu" class="text-danger" style="font-size: small;"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-success btn-sm">Simpan</button>
+            <button type="submit" class="btn btn-warning btn-sm">Batal</button>
+        </div>
+    </div>
+    }
+    </div>
+    </div>
+</div>

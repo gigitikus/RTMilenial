@@ -1,0 +1,102 @@
+@model RTMilenial.Models.KepalaKeluarga;
+@{
+    ViewData["Title"] = "Tambah Kepala Keluarga";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+<div class="container-fluid">
+<div class="row mb-2">
+    <div class="col-sm-6">
+    <h1>Tambah Kepala Keluarga</h1>
+    </div>
+    <div class="col-sm-6">
+    <ol class="breadcrumb float-sm-right">
+        <li class="breadcrumb-item"><a href="#">Beranda</a></li>
+        <li class="breadcrumb-item active">Tambah Kepala Keluarga</li>
+    </ol>
+    </div>
+</div>
+</div><!-- /.container-fluid -->
+</section>
+
+<div class="content">
+    <div class="row">
+        <div class="col-sm-12">
+        @using (Html.BeginForm("CreateKK", "KepalaKeluarga", 
+        FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="card card-primary card-outline">
+            <div class="card-body">
+                @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="NoKK">No. Kartu Keluarga</label>
+                            @Html.EditorFor(model => model.NoKk, new { htmlAttributes = new {@class = "form-control"}})
+                            <span asp-validation-for="NoKk" class="text-danger" style="font-size: small;"></span>  
+                        </div>
+                        <div class="form-group">
+                            <label for="Nik">NIK</label>
+                            @Html.EditorFor(model => model.NIK, new { htmlAttributes = new {@class = "form-control"}})
+                            <span asp-validation-for="NIK" class="text-danger" style="font-size: small;"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="NamaKK">Nama Kepala Keluarga</label>
+                            @Html.EditorFor(model => model.NamaKk, new { htmlAttributes = new {@class = "form-control"}})
+                            <span asp-validation-for="NamaKk" class="text-danger" style="font-size: small;"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Alamat">Alamat</label>
+                            @Html.EditorFor(model => model.Alamat, new { htmlAttributes = new {@class = "form-control"}})
+                            <span asp-validation-for="Alamat" class="text-danger" style="font-size: small;"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="RtRw">RT / RW</label>
+                            @Html.EditorFor(model => model.Rtrw, new { htmlAttributes = new {@class = "form-control"}})
+                            <span asp-validation-for="Rtrw" class="text-danger" style="font-size: small;"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="DesaKelurahan">Desa / Kelurahan</label>
+                            @Html.EditorFor(model => model.DesaKelurahan, new { htmlAttributes = new {@class = "form-control"}})
+                            <span asp-validation-for="DesaKelurahan" class="text-danger" style="font-size: small;"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Kecamatan">Kecamatan</label>
+                            @Html.EditorFor(model => model.Kecamatan, new { htmlAttributes = new {@class = "form-control"}})
+                            <span asp-validation-for="Kecamatan" class="text-danger" style="font-size: small;"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="KabupatenKota">Kabupaten / Kota</label>
+                            @Html.EditorFor(model => model.KabupatenKota, new { htmlAttributes = new {@class = "form-control"}})
+                            <span asp-validation-for="KabupatenKota" class="text-danger" style="font-size: small;"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="KodePos">Kode Pos</label>
+                            @Html.EditorFor(model => model.KodePos, new { htmlAttributes = new {@class = "form-control"}})
+                            <span asp-validation-for="KodePos" class="text-danger" style="font-size: small;"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Provinsi">Provinsi</label>
+                            @Html.EditorFor(model => model.Provinsi, new { htmlAttributes = new {@class = "form-control"}})
+                            <span asp-validation-for="Provinsi" class="text-danger" style="font-size: small;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-success btn-sm">Simpan</button>
+                <button type="submit" class="btn btn-warning btn-sm">Batal</button>
+            </div>
+            </div>
+            
+        }
+        </div>
+    </div>
+</div>
+
+

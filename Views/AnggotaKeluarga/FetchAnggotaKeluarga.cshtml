@@ -1,0 +1,122 @@
+@model IEnumerable<RTMilenial.Models.AnggotaKeluarga>
+@{
+    ViewData["Title"] = "Anggota Keluarga";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+<div class="container-fluid">
+<div class="row mb-2">
+    <div class="col-sm-6">
+    <h1>Data Anggota Keluarga</h1>
+    </div>
+    <div class="col-sm-6">
+    <ol class="breadcrumb float-sm-right">
+        <li class="breadcrumb-item"><a href="#">Beranda</a></li>
+        <li class="breadcrumb-item active">Anggota Keluarga</li>
+    </ol>
+    </div>
+</div>
+</div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    
+                    <div class="card-tools">
+                        <div class="input-group input-group-sm">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <div class="input-group-append">
+                                <div class="btn btn-primary">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table id="example2" class="table table-responsive table-hover" 
+                    style="font-size: small;">
+                        <thead>
+                            <tr>
+                                <th>No.KK</th>
+                                <th>No.Urut</th>
+                                <th>Nama Lengkap</th>
+                                <th>NIK</th>
+                                <th>Jenis Kelamin</th>
+                                <th>Tempat Lahir</th>
+                                <th>Tanggal Lahir</th>
+                                <th>Agama</th>
+                                <th>Pendidikan</th>
+                                <th>Pekerjaan</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(model => item.NoKk)</td>
+                                    <td>@Html.DisplayFor(model => item.NoUrut)</td>
+                                    <td>@Html.DisplayFor(model => item.NamaLengkap)</td>
+                                    <td>@Html.DisplayFor(model => item.Nik)</td>
+                                    <td>@Html.DisplayFor(model => item.JenisKelamin)</td>
+                                    <td>@Html.DisplayFor(model => item.TempatLahir)</td>
+                                    <td>@Convert.ToDateTime(item.TanggalLahir).ToString("dd-MM-yyyy")</td>
+                                    <td>@Html.DisplayFor(model => item.Agama)</td>
+                                    <td>@Html.DisplayFor(model => item.Pendidikan)</td>
+                                    <td>@Html.DisplayFor(model => item.JenisPekerjaan)</td>
+                                    <td>
+                                        <div class="mailbox-controls">
+                                            <button type="button" class="btn btn-default btn-sm"><i class="fas fa-edit"></i></button>
+                                            <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
+                                            <button type="button" class="btn btn-default btn-sm"><i class="fas fa-search"></i></button>            
+                                        </div>
+                                    </td>
+                                </tr>   
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    $(function () {
+        $('#example1').DataTable();
+    });
+    function Delete(id){
+        var txt;
+        var r = confirm("Are you sure you want to Delete?");
+        if (r == true) {
+            
+            $.ajax(
+            {
+                type: "POST",
+                url: '@Url.Action("Delete", "AnggotaKeluarga")',
+                data: {
+                    id: id
+                },
+                error: function (result) {
+                    alert("error");
+                },
+                success: function (result) {
+                    if (result == true) {
+                        var baseUrl="/AnggotaKeluarga";
+                        window.location.reload();
+                    }
+                    else {
+                        alert("There is a problem, Try Later!");
+                    }
+                }
+            });
+        } 
+    }
+</script>
