@@ -1,32 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "G:\\NANDA\\Project\\RTMilenial\\RTMilenial.csproj": {}
+    "/home/nandakapol/Project/GitRepo/RTMilenial/RTMilenial.csproj": {}
   },
   "projects": {
-    "G:\\NANDA\\Project\\RTMilenial\\RTMilenial.csproj": {
+    "/home/nandakapol/Project/GitRepo/RTMilenial/RTMilenial.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\NANDA\\Project\\RTMilenial\\RTMilenial.csproj",
+        "projectUniqueName": "/home/nandakapol/Project/GitRepo/RTMilenial/RTMilenial.csproj",
         "projectName": "RTMilenial",
-        "projectPath": "G:\\NANDA\\Project\\RTMilenial\\RTMilenial.csproj",
-        "packagesPath": "C:\\Users\\nanda.destyandana\\.nuget\\packages\\",
-        "outputPath": "G:\\NANDA\\Project\\RTMilenial\\obj\\",
+        "projectPath": "/home/nandakapol/Project/GitRepo/RTMilenial/RTMilenial.csproj",
+        "packagesPath": "/home/nandakapol/.nuget/packages/",
+        "outputPath": "/home/nandakapol/Project/GitRepo/RTMilenial/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\nanda.destyandana\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "/home/nandakapol/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -80,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
         }
       }
     }
