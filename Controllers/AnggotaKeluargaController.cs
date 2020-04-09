@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using RTMilenial.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace RTMilenial.Controllers
 {
@@ -26,9 +27,49 @@ namespace RTMilenial.Controllers
 
         public ActionResult CreateAnggotaKeluarga(string NoKK, string NamaKK)
         {
-            IEnumerable<AnggotaKeluarga> ak = db.AnggotaKeluarga.ToList().Where(s => s.NoKk == NoKK.Trim());
+            IEnumerable<AnggotaKeluarga> ak = db.AnggotaKeluarga.ToList().Where(s => s.NoKk == NoKK.Trim()).OrderBy(x => x.NoUrut);
+            
+            List<JenisKelamin> jenisKelamins = new List<JenisKelamin>();
+            jenisKelamins.Add(new JenisKelamin{JenisKelaminValue = "LAKI-LAKI", JenisKelaminDisplay = "Laki-Laki"});
+            jenisKelamins.Add(new JenisKelamin{JenisKelaminValue = "PEREMPUAN", JenisKelaminDisplay = "Perempuan"});
+
+            List<Kewarganegaraan> kewarganegaraans = new List<Kewarganegaraan>();
+            kewarganegaraans.Add(new Kewarganegaraan{KewarganegaraanValue = "WNI", KewarganegaraanDisplay = "WNI"});
+            kewarganegaraans.Add(new Kewarganegaraan{KewarganegaraanValue = "WNA", KewarganegaraanDisplay = "WNA"});
+
+            Task<List<SelectItemList>> t1 = Task<List<SelectItemList>>.Run(() => {
+                return getMasterAgama();
+            });
+
+            Task<List<SelectItemList>> t2 = Task<List<SelectItemList>>.Run(() => {
+                return getMasterHubunganKeluarga();
+            });
+
+            Task<List<SelectItemList>> t3 = Task<List<SelectItemList>>.Run(() => {
+                return getMasterJenisPekerjaan();
+            });
+
+            Task<List<SelectItemList>> t4 = Task<List<SelectItemList>>.Run(() => {
+                return getMasterPendidikan();
+            });
+
+            Task<List<SelectItemList>> t5 = Task<List<SelectItemList>>.Run(() => {
+                return getMasterStatusPerkawinan();
+            });
+
+            Task.WaitAll(t1,t2,t3,t4,t5);
+
+            //ViewBag Collection
             ViewBag.lsAnggotaKeluarga = ak;
+            ViewBag.lsJenisKelamin = jenisKelamins;
+            ViewBag.lsKewarganegaraan = kewarganegaraans;
+            ViewBag.lsAgama = t1.Result;
+            ViewBag.lsHubunganKeluarga = t2.Result;
+            ViewBag.lsJenisPekerjaan = t3.Result;
+            ViewBag.lsPendidikan = t4.Result;
+            ViewBag.lsStatusKawin = t5.Result;
             ViewBag.noKK = NoKK.Trim();
+            
             return View();
         }
 
@@ -98,6 +139,101 @@ namespace RTMilenial.Controllers
                 aks.TempatLahir = ak.TempatLahir;
                 db.SaveChanges();
                 return RedirectToAction("FecthAnggotaKeluarga", "AnggotaKeluarga");
+        }
+
+        public async Task<List<SelectItemList>> getMasterAgama()
+        {
+            List<SelectItemList> selectItemLists = new List<SelectItemList>();
+            List<MasterAgama> ma = new List<MasterAgama>();
+
+            using (var dataContext = new MyDbContext())
+            {
+                ma = await dataContext.MasterAgama.ToListAsync();
+            }
+
+            foreach(var item in ma)
+            {
+                selectItemLists.Add(new SelectItemList{SelectValueMember = item.Agama,
+                SelectDisplayMember = item.AgamaDescription});
+            }
+
+            return selectItemLists;
+        }
+
+        public async Task<List<SelectItemList>> getMasterHubunganKeluarga()
+        {
+            List<SelectItemList> selectItemLists = new List<SelectItemList>();
+            List<MasterHubunganDalamKeluarga> ma = new List<MasterHubunganDalamKeluarga>();
+
+            using (var dataContext = new MyDbContext())
+            {
+                ma = await dataContext.MasterHubunganDalamKeluarga.ToListAsync();
+            }
+
+            foreach(var item in ma)
+            {
+                selectItemLists.Add(new SelectItemList{SelectValueMember = item.HubunganDalamKeluarga,
+                SelectDisplayMember = item.HubunganDalamKeluargaDescription});
+            }
+
+            return selectItemLists;
+        }
+
+        public async Task<List<SelectItemList>> getMasterJenisPekerjaan()
+        {
+            List<SelectItemList> selectItemLists = new List<SelectItemList>();
+            List<MasterJenisPekerjaan> ma = new List<MasterJenisPekerjaan>();
+
+            using (var dataContext = new MyDbContext())
+            {
+                ma = await dataContext.MasterJenisPekerjaan.ToListAsync();
+            }
+
+            foreach(var item in ma)
+            {
+                selectItemLists.Add(new SelectItemList{SelectValueMember = item.JenisPekerjaan,
+                SelectDisplayMember = item.JenisPekerjaanDescription});
+            }
+
+            return selectItemLists;
+        }
+
+        public async Task<List<SelectItemList>> getMasterPendidikan()
+        {
+            List<SelectItemList> selectItemLists = new List<SelectItemList>();
+            List<MasterPendidikan> ma = new List<MasterPendidikan>();
+
+            using (var dataContext = new MyDbContext())
+            {
+                ma = await dataContext.MasterPendidikan.ToListAsync();
+            }
+
+            foreach(var item in ma)
+            {
+                selectItemLists.Add(new SelectItemList{SelectValueMember = item.Pendidikan,
+                SelectDisplayMember = item.PendidikanDescription});
+            }
+
+            return selectItemLists;
+        }
+
+        public async Task<List<SelectItemList>> getMasterStatusPerkawinan()
+        {
+            List<SelectItemList> selectItemLists = new List<SelectItemList>();
+            List<MasterStatusPerkawinan> ma = new List<MasterStatusPerkawinan>();
+
+            using (var dataContext = new MyDbContext())
+            {
+                ma = await dataContext.MasterStatusPerkawinan.ToListAsync();
+            }
+
+            foreach(var item in ma)
+            {
+                selectItemLists.Add(new SelectItemList{SelectValueMember = item.StatusPerkawinan,
+                SelectDisplayMember = item.StatusPerkawinanDescription});
+            }
+
+            return selectItemLists;
         }
     }
 }
