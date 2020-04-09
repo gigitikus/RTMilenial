@@ -27,6 +27,7 @@ namespace RTMilenial.Controllers
 
         public ActionResult CreateAnggotaKeluarga(string NoKK, string NamaKK)
         {
+            //Fix Mantap
             IEnumerable<AnggotaKeluarga> ak = db.AnggotaKeluarga.ToList().Where(s => s.NoKk == NoKK.Trim()).OrderBy(x => x.NoUrut);
             
             List<JenisKelamin> jenisKelamins = new List<JenisKelamin>();
