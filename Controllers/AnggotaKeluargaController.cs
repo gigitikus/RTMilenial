@@ -30,6 +30,7 @@ namespace RTMilenial.Controllers
             IEnumerable<AnggotaKeluarga> ak = db.AnggotaKeluarga.ToList().Where(s => s.NoKk == NoKK.Trim()).OrderBy(x => x.NoUrut);
             
             List<JenisKelamin> jenisKelamins = new List<JenisKelamin>();
+            jenisKelamins.Add(new JenisKelamin{JenisKelaminValue = "", JenisKelaminDisplay = "Pilih Jenis Kelamin"});
             jenisKelamins.Add(new JenisKelamin{JenisKelaminValue = "LAKI-LAKI", JenisKelaminDisplay = "Laki-Laki"});
             jenisKelamins.Add(new JenisKelamin{JenisKelaminValue = "PEREMPUAN", JenisKelaminDisplay = "Perempuan"});
 
@@ -148,7 +149,7 @@ namespace RTMilenial.Controllers
 
             using (var dataContext = new MyDbContext())
             {
-                ma = await dataContext.MasterAgama.ToListAsync();
+                ma = await dataContext.MasterAgama.OrderBy(s => s.OrderNo).ToListAsync();
             }
 
             foreach(var item in ma)
@@ -157,6 +158,9 @@ namespace RTMilenial.Controllers
                 SelectDisplayMember = item.AgamaDescription});
             }
 
+            selectItemLists.Insert(0, new SelectItemList{SelectValueMember = "", 
+            SelectDisplayMember = "Pilih Agama"});
+            
             return selectItemLists;
         }
 
@@ -167,7 +171,7 @@ namespace RTMilenial.Controllers
 
             using (var dataContext = new MyDbContext())
             {
-                ma = await dataContext.MasterHubunganDalamKeluarga.ToListAsync();
+                ma = await dataContext.MasterHubunganDalamKeluarga.OrderBy(x => x.OrderNo).ToListAsync();
             }
 
             foreach(var item in ma)
@@ -175,6 +179,9 @@ namespace RTMilenial.Controllers
                 selectItemLists.Add(new SelectItemList{SelectValueMember = item.HubunganDalamKeluarga,
                 SelectDisplayMember = item.HubunganDalamKeluargaDescription});
             }
+
+            selectItemLists.Insert(0, new SelectItemList{SelectValueMember = "", 
+            SelectDisplayMember = "Pilih Hubungan Keluarga"});
 
             return selectItemLists;
         }
@@ -186,7 +193,7 @@ namespace RTMilenial.Controllers
 
             using (var dataContext = new MyDbContext())
             {
-                ma = await dataContext.MasterJenisPekerjaan.ToListAsync();
+                ma = await dataContext.MasterJenisPekerjaan.OrderBy(o => o.OrderNo).ToListAsync();
             }
 
             foreach(var item in ma)
@@ -194,6 +201,9 @@ namespace RTMilenial.Controllers
                 selectItemLists.Add(new SelectItemList{SelectValueMember = item.JenisPekerjaan,
                 SelectDisplayMember = item.JenisPekerjaanDescription});
             }
+
+            selectItemLists.Insert(0, new SelectItemList{SelectValueMember = "", 
+            SelectDisplayMember = "Pilih Jenis Pekerjaan"});
 
             return selectItemLists;
         }
@@ -205,7 +215,7 @@ namespace RTMilenial.Controllers
 
             using (var dataContext = new MyDbContext())
             {
-                ma = await dataContext.MasterPendidikan.ToListAsync();
+                ma = await dataContext.MasterPendidikan.OrderBy(o => o.OrderNo).ToListAsync();
             }
 
             foreach(var item in ma)
@@ -213,6 +223,9 @@ namespace RTMilenial.Controllers
                 selectItemLists.Add(new SelectItemList{SelectValueMember = item.Pendidikan,
                 SelectDisplayMember = item.PendidikanDescription});
             }
+
+            selectItemLists.Insert(0, new SelectItemList{SelectValueMember = "", 
+            SelectDisplayMember = "Pilih Pendidikan"});
 
             return selectItemLists;
         }
@@ -224,7 +237,7 @@ namespace RTMilenial.Controllers
 
             using (var dataContext = new MyDbContext())
             {
-                ma = await dataContext.MasterStatusPerkawinan.ToListAsync();
+                ma = await dataContext.MasterStatusPerkawinan.OrderBy(o => o.OrderNo).ToListAsync();
             }
 
             foreach(var item in ma)
@@ -232,6 +245,9 @@ namespace RTMilenial.Controllers
                 selectItemLists.Add(new SelectItemList{SelectValueMember = item.StatusPerkawinan,
                 SelectDisplayMember = item.StatusPerkawinanDescription});
             }
+
+            selectItemLists.Insert(0, new SelectItemList{SelectValueMember = "", 
+            SelectDisplayMember = "Pilih Status Perkawinan"});
 
             return selectItemLists;
         }
