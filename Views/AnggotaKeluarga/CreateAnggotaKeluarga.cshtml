@@ -97,8 +97,9 @@
                         @* @Html.EditorFor(model => model.JenisKelamin, new { htmlAttributes = new {@class = "form-control"}}) *@
                         @Html.DropDownListFor(model => model.JenisKelamin, 
                         new SelectList(ViewBag.lsJenisKelamin, "JenisKelaminValue", "JenisKelaminDisplay"),
-                        new {@class="form-control select2"})
-                        <span asp-validation-for="JenisKelamin" class="text-danger" style="font-size: small;"></span>
+                        new {@class="form-control select2",
+                        @name="JenisKelamin", @id="JenisKelamin"})
+                        @* <span asp-validation-for="JenisKelamin" class="text-danger" style="font-size: small;"></span> *@
                     </div>
                     <div class="form-group">
                         <label for="TempatLahir">Tempat Lahir</label>
@@ -128,7 +129,7 @@
                             @type = "text"
                             }})     *@
                         </div>
-                        <span asp-validation-for="TanggalLahir" class="text-danger" style="font-size: small;"></span>
+                        @* <span asp-validation-for="TanggalLahir" class="text-danger" style="font-size: small;"></span> *@
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -137,15 +138,17 @@
                         @* @Html.EditorFor(model => model.Agama, new { htmlAttributes = new {@class = "form-control"}}) *@
                         @Html.DropDownListFor(model => model.Agama, 
                         new SelectList(ViewBag.lsAgama, "SelectValueMember", "SelectDisplayMember"),
-                        new {@class="form-control select2"})
-                        <span asp-validation-for="Agama" class="text-danger" style="font-size: small;"></span>
+                        new {@class="form-control select2", 
+                        @name="Agama", @id="Agama"})
+                        @* <span asp-validation-for="Agama" class="text-danger" style="font-size: small;"></span> *@
                     </div>
                     <div class="form-group">
                         <label for="Pendidikan">Pendidikan</label>
                         @* @Html.EditorFor(model => model.Pendidikan, new { htmlAttributes = new {@class = "form-control"}}) *@
                         @Html.DropDownListFor(model => model.Pendidikan, 
                         new SelectList(ViewBag.lsPendidikan, "SelectValueMember", "SelectDisplayMember"),
-                        new {@class="form-control select2"})
+                        new {@class="form-control select2", 
+                        @name="Pendidikan", @id="Pendidikakn"})
                         <span asp-validation-for="Pendidikan" class="text-danger" style="font-size: small;"></span>
                     </div>
                     <div class="form-group">
@@ -153,24 +156,27 @@
                         @* @Html.EditorFor(model => model.JenisPekerjaan, new { htmlAttributes = new {@class = "form-control"}}) *@
                         @Html.DropDownListFor(model => model.JenisPekerjaan, 
                         new SelectList(ViewBag.lsJenisPekerjaan, "SelectValueMember", "SelectDisplayMember"),
-                        new {@class="form-control select2"})
-                        <span asp-validation-for="JenisPekerjaan" class="text-danger" style="font-size: small;"></span>
+                        new {@class="form-control select2", 
+                        @name="JenisPekerjaan", @id="JenisPekerjaan"})
+                        @* <span asp-validation-for="JenisPekerjaan" class="text-danger" style="font-size: small;"></span> *@
                     </div>
                     <div class="form-group">
                         <label for="StatusPerkawinan">Status Perkawinan</label>
                         @* @Html.EditorFor(model => model.StatusPerkawinan, new { htmlAttributes = new {@class = "form-control"}}) *@
                         @Html.DropDownListFor(model => model.StatusPerkawinan, 
                         new SelectList(ViewBag.lsStatusKawin, "SelectValueMember", "SelectDisplayMember"),
-                        new {@class="form-control select2"})
-                        <span asp-validation-for="StatusPerkawinan" class="text-danger" style="font-size: small;"></span>
+                        new {@class="form-control select2", 
+                        @name="StatusPerkawinan", @id="StatusPerkawinan"})
+                        @* <span asp-validation-for="StatusPerkawinan" class="text-danger" style="font-size: small;"></span> *@
                     </div>
                     <div class="form-group">
                         <label for="HubunganDalamKeluarga">Hubungan Dalam Keluarga</label>
                         @* @Html.EditorFor(model => model.HubunganDalamKeluarga, new { htmlAttributes = new {@class = "form-control"}}) *@
                         @Html.DropDownListFor(model => model.HubunganDalamKeluarga, 
                         new SelectList(ViewBag.lsHubunganKeluarga, "SelectValueMember", "SelectDisplayMember"),
-                        new {@class="form-control select2"})
-                        <span asp-validation-for="HubunganDalamKeluarga" class="text-danger" style="font-size: small;"></span>
+                        new {@class="form-control select2",
+                        @name="HubunganDalamKeluarga", @id="HubunganDalamKeluarga"})
+                        @* <span asp-validation-for="HubunganDalamKeluarga" class="text-danger" style="font-size: small;"></span> *@
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -191,13 +197,19 @@
                     </div>
                     <div class="form-group">
                         <label for="Ayah">Ayah Kandung</label>
-                        @Html.EditorFor(model => model.Ayah, new { htmlAttributes = new {@class = "form-control"}})
-                        <span asp-validation-for="Ayah" class="text-danger" style="font-size: small;"></span>
+                        <input type="text" name="Ayah" class="form-control" 
+                        id="Ayah"
+                        placeholder="Ayah Kandung">
+                        @* @Html.EditorFor(model => model.Ayah, new { htmlAttributes = new {@class = "form-control"}})
+                        <span asp-validation-for="Ayah" class="text-danger" style="font-size: small;"></span> *@
                     </div>
                     <div class="form-group">
                         <label for="Ibu">Ibu Kandung</label>
-                        @Html.EditorFor(model => model.Ibu, new { htmlAttributes = new {@class = "form-control"}})
-                        <span asp-validation-for="Ibu" class="text-danger" style="font-size: small;"></span>
+                        <input type="text" name="Ibu" class="form-control" 
+                        id="Ibu"
+                        placeholder="Ibu Kandung">
+                        @* @Html.EditorFor(model => model.Ibu, new { htmlAttributes = new {@class = "form-control"}})
+                        <span asp-validation-for="Ibu" class="text-danger" style="font-size: small;"></span> *@
                     </div>
                 </div>
             </div>
