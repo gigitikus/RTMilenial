@@ -71,6 +71,7 @@ namespace RTMilenial.Controllers
             ViewBag.lsPendidikan = t4.Result;
             ViewBag.lsStatusKawin = t5.Result;
             ViewBag.noKK = NoKK.Trim();
+            ViewBag.namaKK = NamaKK.Trim();
             
             return View();
         }
