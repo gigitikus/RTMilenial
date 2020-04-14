@@ -35,55 +35,85 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="NoKK">No. Kartu Keluarga</label>
-                            @Html.EditorFor(model => model.NoKk, new { htmlAttributes = new {@class = "form-control"}})
-                            <span asp-validation-for="NoKk" class="text-danger" style="font-size: small;"></span>  
+                            @* @Html.EditorFor(model => model.NoKk, new { htmlAttributes = new {@class = "form-control"}})
+                            <span asp-validation-for="NoKk" class="text-danger" style="font-size: small;"></span>   *@
+                            <input type="text" name="NoKk" class="form-control" 
+                            id="NoKk"
+                            placeholder="No. Kartu Keluarga">
                         </div>
                         <div class="form-group">
                             <label for="Nik">NIK</label>
-                            @Html.EditorFor(model => model.NIK, new { htmlAttributes = new {@class = "form-control"}})
-                            <span asp-validation-for="NIK" class="text-danger" style="font-size: small;"></span>
+                            <input type="text" name="Nik" class="form-control" 
+                            id="Nik"
+                            placeholder="NIK">
+                            @* @Html.EditorFor(model => model.NIK, new { htmlAttributes = new {@class = "form-control"}})
+                            <span asp-validation-for="NIK" class="text-danger" style="font-size: small;"></span> *@
                         </div>
                         <div class="form-group">
                             <label for="NamaKK">Nama Kepala Keluarga</label>
-                            @Html.EditorFor(model => model.NamaKk, new { htmlAttributes = new {@class = "form-control"}})
-                            <span asp-validation-for="NamaKk" class="text-danger" style="font-size: small;"></span>
+                            <input type="text" name="NamaKK" class="form-control" 
+                            id="NamaKK"
+                            placeholder="NamaKK">
+                            @* @Html.EditorFor(model => model.NamaKk, new { htmlAttributes = new {@class = "form-control"}})
+                            <span asp-validation-for="NamaKk" class="text-danger" style="font-size: small;"></span> *@
                         </div>
                         <div class="form-group">
                             <label for="Alamat">Alamat</label>
-                            @Html.EditorFor(model => model.Alamat, new { htmlAttributes = new {@class = "form-control"}})
-                            <span asp-validation-for="Alamat" class="text-danger" style="font-size: small;"></span>
+                            <input type="text" name="Alamat" class="form-control" 
+                            id="Alamat"
+                            placeholder="Alamat">
+                            @* @Html.EditorFor(model => model.Alamat, new { htmlAttributes = new {@class = "form-control"}})
+                            <span asp-validation-for="Alamat" class="text-danger" style="font-size: small;"></span> *@
                         </div>
                         <div class="form-group">
                             <label for="RtRw">RT / RW</label>
-                            @Html.EditorFor(model => model.Rtrw, new { htmlAttributes = new {@class = "form-control"}})
-                            <span asp-validation-for="Rtrw" class="text-danger" style="font-size: small;"></span>
+                            <input type="text" name="RtRw" class="form-control" 
+                            id="RtRw"
+                            placeholder="RT / RW">
+                            @* @Html.EditorFor(model => model.Rtrw, new { htmlAttributes = new {@class = "form-control"}})
+                            <span asp-validation-for="Rtrw" class="text-danger" style="font-size: small;"></span> *@
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="DesaKelurahan">Desa / Kelurahan</label>
-                            @Html.EditorFor(model => model.DesaKelurahan, new { htmlAttributes = new {@class = "form-control"}})
-                            <span asp-validation-for="DesaKelurahan" class="text-danger" style="font-size: small;"></span>
+                            <input type="text" name="DesaKelurahan" class="form-control" 
+                            id="DesaKelurahan"
+                            placeholder="Desa / Kelurahan">
+                            @* @Html.EditorFor(model => model.DesaKelurahan, new { htmlAttributes = new {@class = "form-control"}})
+                            <span asp-validation-for="DesaKelurahan" class="text-danger" style="font-size: small;"></span> *@
                         </div>
                         <div class="form-group">
                             <label for="Kecamatan">Kecamatan</label>
-                            @Html.EditorFor(model => model.Kecamatan, new { htmlAttributes = new {@class = "form-control"}})
-                            <span asp-validation-for="Kecamatan" class="text-danger" style="font-size: small;"></span>
+                            <input type="text" name="Kecamatan" class="form-control" 
+                            id="Kecamatan"
+                            placeholder="Kecamatan">
+                            @* @Html.EditorFor(model => model.Kecamatan, new { htmlAttributes = new {@class = "form-control"}})
+                            <span asp-validation-for="Kecamatan" class="text-danger" style="font-size: small;"></span> *@
                         </div>
                         <div class="form-group">
                             <label for="KabupatenKota">Kabupaten / Kota</label>
-                            @Html.EditorFor(model => model.KabupatenKota, new { htmlAttributes = new {@class = "form-control"}})
-                            <span asp-validation-for="KabupatenKota" class="text-danger" style="font-size: small;"></span>
+                            <input type="text" name="KabupatenKota" class="form-control" 
+                            id="KabupatenKota"
+                            placeholder="Kabupaten / Kota">
+                            @* @Html.EditorFor(model => model.KabupatenKota, new { htmlAttributes = new {@class = "form-control"}})
+                            <span asp-validation-for="KabupatenKota" class="text-danger" style="font-size: small;"></span> *@
                         </div>
                         <div class="form-group">
                             <label for="KodePos">Kode Pos</label>
-                            @Html.EditorFor(model => model.KodePos, new { htmlAttributes = new {@class = "form-control"}})
-                            <span asp-validation-for="KodePos" class="text-danger" style="font-size: small;"></span>
+                            <input type="text" name="KodePos" class="form-control" 
+                            id="KodePos"
+                            placeholder="Kode Pos">
+                            @* @Html.EditorFor(model => model.KodePos, new { htmlAttributes = new {@class = "form-control"}})
+                            <span asp-validation-for="KodePos" class="text-danger" style="font-size: small;"></span> *@
                         </div>
                         <div class="form-group">
                             <label for="Provinsi">Provinsi</label>
-                            @Html.EditorFor(model => model.Provinsi, new { htmlAttributes = new {@class = "form-control"}})
-                            <span asp-validation-for="Provinsi" class="text-danger" style="font-size: small;"></span>
+                            <input type="text" name="Provinsi" class="form-control" 
+                            id="Provinsi"
+                            placeholder="Provinsi">
+                            @* @Html.EditorFor(model => model.Provinsi, new { htmlAttributes = new {@class = "form-control"}})
+                            <span asp-validation-for="Provinsi" class="text-danger" style="font-size: small;"></span> *@
                         </div>
                     </div>
                 </div>
