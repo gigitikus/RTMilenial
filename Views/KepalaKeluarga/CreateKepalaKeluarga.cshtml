@@ -25,7 +25,7 @@
     <div class="row">
         <div class="col-sm-12">
         @using (Html.BeginForm("CreateKK", "KepalaKeluarga", 
-        FormMethod.Post))
+        FormMethod.Post, new {@id="AgtKeluargaForm", role="form"}))
         {
             @Html.AntiForgeryToken()
             <div class="card card-primary card-outline">
@@ -53,7 +53,7 @@
                             <label for="NamaKK">Nama Kepala Keluarga</label>
                             <input type="text" name="NamaKK" class="form-control" 
                             id="NamaKK"
-                            placeholder="NamaKK">
+                            placeholder="Nama Kepala Keluarga">
                             @* @Html.EditorFor(model => model.NamaKk, new { htmlAttributes = new {@class = "form-control"}})
                             <span asp-validation-for="NamaKk" class="text-danger" style="font-size: small;"></span> *@
                         </div>

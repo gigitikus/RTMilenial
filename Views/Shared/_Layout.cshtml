@@ -40,7 +40,7 @@
         <!-- Left navbar links -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a href="index3.html" class="nav-link">Beranda</a>
+            <a href="@Url.Action("Index", "Home")" class="nav-link">Beranda</a>
           </li>
           <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" 
@@ -261,6 +261,9 @@
         },
         Provinsi: {
           required: true
+        },
+        Kecamatan: {
+          required: true
         }
       },
       messages: {
@@ -304,7 +307,7 @@
           required: "No. Kartu Keluarga tidak boleh kosong"
         },
         NamaKK: {
-          required: "Nama Kartu Keluarga tidak boleh kosong"
+          required: "Nama Kepala Keluarga tidak boleh kosong"
         },
         Alamat: {
           required: "Alamat tidak boleh kosong"
@@ -323,6 +326,9 @@
         },
         Provinsi: {
           required: "Provinsi tidak boleh kosong"
+        },
+        Kecamatan: {
+          required: "Kecamatan tidak boleh kosong"
         }
       },
       errorElement: 'span',
@@ -338,7 +344,7 @@
       }
     });
   });
-</script>
+</script> 
 
 </body>
 </html>
