@@ -1,4 +1,4 @@
-@model RTMilenial.Models.KepalaKeluarga;
+@model RTMilenial.Models.VwAlamatKepalaKeluarga;
 @{
     ViewData["Title"] = "Tambah Kepala Keluarga";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -28,103 +28,176 @@
         FormMethod.Post, new {@id="AgtKeluargaForm", role="form"}))
         {
             @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new {@class = "text-danger"})
             <div class="card card-primary card-outline">
-            <div class="card-body">
-                @Html.ValidationSummary(true, "", new {@class = "text-danger"})
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="NoKK">No. Kartu Keluarga</label>
-                            @* @Html.EditorFor(model => model.NoKk, new { htmlAttributes = new {@class = "form-control"}})
-                            <span asp-validation-for="NoKk" class="text-danger" style="font-size: small;"></span>   *@
-                            <input type="text" name="NoKk" class="form-control" 
-                            id="NoKk"
-                            placeholder="No. Kartu Keluarga">
-                        </div>
-                        <div class="form-group">
-                            <label for="Nik">NIK</label>
-                            <input type="text" name="Nik" class="form-control" 
-                            id="Nik"
-                            placeholder="NIK">
-                            @* @Html.EditorFor(model => model.NIK, new { htmlAttributes = new {@class = "form-control"}})
-                            <span asp-validation-for="NIK" class="text-danger" style="font-size: small;"></span> *@
-                        </div>
-                        <div class="form-group">
-                            <label for="NamaKK">Nama Kepala Keluarga</label>
-                            <input type="text" name="NamaKK" class="form-control" 
-                            id="NamaKK"
-                            placeholder="Nama Kepala Keluarga">
-                            @* @Html.EditorFor(model => model.NamaKk, new { htmlAttributes = new {@class = "form-control"}})
-                            <span asp-validation-for="NamaKk" class="text-danger" style="font-size: small;"></span> *@
-                        </div>
-                        <div class="form-group">
-                            <label for="Alamat">Alamat</label>
-                            <input type="text" name="Alamat" class="form-control" 
-                            id="Alamat"
-                            placeholder="Alamat">
-                            @* @Html.EditorFor(model => model.Alamat, new { htmlAttributes = new {@class = "form-control"}})
-                            <span asp-validation-for="Alamat" class="text-danger" style="font-size: small;"></span> *@
-                        </div>
-                        <div class="form-group">
-                            <label for="RtRw">RT / RW</label>
-                            <input type="text" name="RtRw" class="form-control" 
-                            id="RtRw"
-                            placeholder="RT / RW">
-                            @* @Html.EditorFor(model => model.Rtrw, new { htmlAttributes = new {@class = "form-control"}})
-                            <span asp-validation-for="Rtrw" class="text-danger" style="font-size: small;"></span> *@
-                        </div>
+                <div class="card-header">
+                    <h3 class="card-title">Data Kartu Keluarga</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="DesaKelurahan">Desa / Kelurahan</label>
-                            <input type="text" name="DesaKelurahan" class="form-control" 
-                            id="DesaKelurahan"
-                            placeholder="Desa / Kelurahan">
-                            @* @Html.EditorFor(model => model.DesaKelurahan, new { htmlAttributes = new {@class = "form-control"}})
-                            <span asp-validation-for="DesaKelurahan" class="text-danger" style="font-size: small;"></span> *@
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="NoKK">No. Kartu Keluarga</label>
+                                @* @Html.EditorFor(model => model.NoKk, new { htmlAttributes = new {@class = "form-control"}})
+                                <span asp-validation-for="NoKk" class="text-danger" style="font-size: small;"></span>   *@
+                                <input type="text" name="NoKk" class="form-control" 
+                                id="NoKk"
+                                placeholder="No. Kartu Keluarga">
+                            </div>
+                            <div class="form-group">
+                                <label for="Nik">NIK</label>
+                                <input type="text" name="NIK" class="form-control" 
+                                id="NIK"
+                                placeholder="NIK">
+                                @* @Html.EditorFor(model => model.NIK, new { htmlAttributes = new {@class = "form-control"}})
+                                <span asp-validation-for="NIK" class="text-danger" style="font-size: small;"></span> *@
+                            </div>
+                            <div class="form-group">
+                                <label for="NamaKK">Nama Kepala Keluarga</label>
+                                <input type="text" name="NamaKk" class="form-control" 
+                                id="NamaKk"
+                                placeholder="Nama Kepala Keluarga">
+                                @* @Html.EditorFor(model => model.NamaKk, new { htmlAttributes = new {@class = "form-control"}})
+                                <span asp-validation-for="NamaKk" class="text-danger" style="font-size: small;"></span> *@
+                            </div>
+                            <div class="form-group">
+                                <label for="Alamat">Alamat</label>
+                                <input type="text" name="Alamat" class="form-control" 
+                                id="Alamat"
+                                placeholder="Alamat">
+                                @* @Html.EditorFor(model => model.Alamat, new { htmlAttributes = new {@class = "form-control"}})
+                                <span asp-validation-for="Alamat" class="text-danger" style="font-size: small;"></span> *@
+                            </div>
+                            <div class="form-group">
+                                <label for="RtRw">RT / RW</label>
+                                <input type="text" name="RtRw" class="form-control" 
+                                id="RtRw"
+                                placeholder="RT / RW">
+                                @* @Html.EditorFor(model => model.Rtrw, new { htmlAttributes = new {@class = "form-control"}})
+                                <span asp-validation-for="Rtrw" class="text-danger" style="font-size: small;"></span> *@
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="Kecamatan">Kecamatan</label>
-                            <input type="text" name="Kecamatan" class="form-control" 
-                            id="Kecamatan"
-                            placeholder="Kecamatan">
-                            @* @Html.EditorFor(model => model.Kecamatan, new { htmlAttributes = new {@class = "form-control"}})
-                            <span asp-validation-for="Kecamatan" class="text-danger" style="font-size: small;"></span> *@
-                        </div>
-                        <div class="form-group">
-                            <label for="KabupatenKota">Kabupaten / Kota</label>
-                            <input type="text" name="KabupatenKota" class="form-control" 
-                            id="KabupatenKota"
-                            placeholder="Kabupaten / Kota">
-                            @* @Html.EditorFor(model => model.KabupatenKota, new { htmlAttributes = new {@class = "form-control"}})
-                            <span asp-validation-for="KabupatenKota" class="text-danger" style="font-size: small;"></span> *@
-                        </div>
-                        <div class="form-group">
-                            <label for="KodePos">Kode Pos</label>
-                            <input type="text" name="KodePos" class="form-control" 
-                            id="KodePos"
-                            placeholder="Kode Pos">
-                            @* @Html.EditorFor(model => model.KodePos, new { htmlAttributes = new {@class = "form-control"}})
-                            <span asp-validation-for="KodePos" class="text-danger" style="font-size: small;"></span> *@
-                        </div>
-                        <div class="form-group">
-                            <label for="Provinsi">Provinsi</label>
-                            <input type="text" name="Provinsi" class="form-control" 
-                            id="Provinsi"
-                            placeholder="Provinsi">
-                            @* @Html.EditorFor(model => model.Provinsi, new { htmlAttributes = new {@class = "form-control"}})
-                            <span asp-validation-for="Provinsi" class="text-danger" style="font-size: small;"></span> *@
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="DesaKelurahan">Desa / Kelurahan</label>
+                                <input type="text" name="DesaKelurahan" class="form-control" 
+                                id="DesaKelurahan"
+                                placeholder="Desa / Kelurahan">
+                                @* @Html.EditorFor(model => model.DesaKelurahan, new { htmlAttributes = new {@class = "form-control"}})
+                                <span asp-validation-for="DesaKelurahan" class="text-danger" style="font-size: small;"></span> *@
+                            </div>
+                            <div class="form-group">
+                                <label for="Kecamatan">Kecamatan</label>
+                                <input type="text" name="Kecamatan" class="form-control" 
+                                id="Kecamatan"
+                                placeholder="Kecamatan">
+                                @* @Html.EditorFor(model => model.Kecamatan, new { htmlAttributes = new {@class = "form-control"}})
+                                <span asp-validation-for="Kecamatan" class="text-danger" style="font-size: small;"></span> *@
+                            </div>
+                            <div class="form-group">
+                                <label for="KabupatenKota">Kabupaten / Kota</label>
+                                <input type="text" name="KabupatenKota" class="form-control" 
+                                id="KabupatenKota"
+                                placeholder="Kabupaten / Kota">
+                                @* @Html.EditorFor(model => model.KabupatenKota, new { htmlAttributes = new {@class = "form-control"}})
+                                <span asp-validation-for="KabupatenKota" class="text-danger" style="font-size: small;"></span> *@
+                            </div>
+                            <div class="form-group">
+                                <label for="KodePos">Kode Pos</label>
+                                <input type="text" name="KodePos" class="form-control" 
+                                id="KodePos"
+                                placeholder="Kode Pos">
+                                @* @Html.EditorFor(model => model.KodePos, new { htmlAttributes = new {@class = "form-control"}})
+                                <span asp-validation-for="KodePos" class="text-danger" style="font-size: small;"></span> *@
+                            </div>
+                            <div class="form-group">
+                                <label for="Provinsi">Provinsi</label>
+                                <input type="text" name="Provinsi" class="form-control" 
+                                id="Provinsi"
+                                placeholder="Provinsi">
+                                @* @Html.EditorFor(model => model.Provinsi, new { htmlAttributes = new {@class = "form-control"}})
+                                <span asp-validation-for="Provinsi" class="text-danger" style="font-size: small;"></span> *@
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card-footer">
-                <button type="submit" class="btn btn-success btn-sm">Simpan</button>
-                <button type="submit" class="btn btn-warning btn-sm" 
-                onclick="location.href='@Url.Action("FetchKelapaKeluarga", "KepalaKeluarga")'" >Batal</button>
+            <div class="card card-warning card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">Data Alamat Rumah</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="BlokNoId">Blok / No.</label>
+                                <input type="text" name="BlokNoId" class="form-control" 
+                                id="BlokNoId"
+                                placeholder="Blok / No.">
+                            </div>
+                            <div class="form-group">
+                                <label for="StatusHuniId">Status Huni</label>
+                                <input type="text" name="StatusHuniId" class="form-control" 
+                                id="StatusHuniId"
+                                placeholder="Status Huni">
+                            </div>
+                            <div class="form-group">
+                                <label for="TanggalHuni">Tanggal Huni</label>
+                                <input type="text" name="TanggalHuni" class="form-control" 
+                                id="TanggalHuni"
+                                placeholder="Tanggal Huni">
+                            </div>
+                            <div class="form-group">
+                                <label for="TanggalHabisHuni">Tanggal Habis Huni</label>
+                                <input type="text" name="TanggalHabisHuni" class="form-control" 
+                                id="TanggalHabisHuni"
+                                placeholder="Tanggal Habis Huni">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="NIKPemilikRumah">NIK Pemilik Rumah</label>
+                                <input type="text" name="NIKPemilikRumah" class="form-control" 
+                                id="NIKPemilikRumah"
+                                placeholder="NIK Pemilik Rumah">
+                            </div>
+                            <div class="form-group">
+                                <label for="NamaPemilikRumah">Nama Pemilik Rumah</label>
+                                <input type="text" name="NamaPemilikRumah" class="form-control" 
+                                id="NamaPemilikRumah"
+                                placeholder="Nama Pemilik Rumah">
+                            </div>
+                            <div class="form-group">
+                                <label for="TenorKPR">Tenor KPR</label>
+                                <input type="text" name="TenorKPR" class="form-control" 
+                                id="TenorKPR"
+                                placeholder="Tenor KPR">
+                            </div>
+                            <div class="form-group">
+                                <label for="NoSuratDomisili">No. Surat Domisili</label>
+                                <input type="text" name="NoSuratDomisili" class="form-control" 
+                                id="NoSuratDomisili"
+                                placeholder="No. Surat Domisili">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-success btn-sm">Simpan</button>
+                    <button type="submit" class="btn btn-warning btn-sm" 
+                    onclick="location.href='@Url.Action("FetchKelapaKeluarga", "KepalaKeluarga")'" >Batal</button>
+                </div>
             </div>
-            </div>
-            
         }
         </div>
     </div>

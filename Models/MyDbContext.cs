@@ -22,6 +22,7 @@ namespace RTMilenial.Models
         public virtual DbSet<MasterPendidikan> MasterPendidikan {get;set;}
         public virtual DbSet<MasterJenisPekerjaan> MasterJenisPekerjaan {get;set;}
         public virtual DbSet<MasterStatusPerkawinan> MasterStatusPerkawinan {get;set;}
+        public virtual DbSet<AlamatKK> AlamatKK {get;set;}
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -427,6 +428,86 @@ namespace RTMilenial.Models
                 entity.Property(e => e.OrderNo)
                     .HasColumnName("OrderNo")
                     .HasColumnType("int")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+
+                entity.Property(e => e.AuditActivity)
+                    .IsRequired()
+                    .HasColumnType("char(1)")
+                    .HasDefaultValueSql("'I'")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+
+                entity.Property(e => e.AuditTime)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("'current_timestamp()'");
+
+                entity.Property(e => e.AuditUserName)
+                    .IsRequired()
+                    .HasColumnType("varchar(255)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+            });
+
+            modelBuilder.Entity<AlamatKK>(entity =>
+            {
+                entity.HasKey(e => e.NoKk)
+                .HasName("PRIMARY");
+
+                entity.HasKey(e => e.BlokNoId)
+                .HasName("PRIMARY");
+
+                entity.Property(e => e.NoKk)
+                    .HasColumnName("NoKk")
+                    .HasColumnType("char(16)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+
+                entity.Property(e => e.BlokNoId)
+                    .HasColumnName("BlokNoId")
+                    .HasColumnType("char(6)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+
+                entity.Property(e => e.StatusHuniId)
+                    .HasColumnName("StatusHuniId")
+                    .HasColumnType("char(3)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+
+                entity.Property(e => e.TanggalHuni)
+                    .HasColumnName("TanggalHuni")
+                    .HasColumnType("datetime")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+
+                entity.Property(e => e.TanggalHabisHuni)
+                    .HasColumnName("TanggalHabisHuni")
+                    .HasColumnType("datetime")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+
+                entity.Property(e => e.NIKPemilikRumah)
+                    .HasColumnName("NIKPemilikRumah")
+                    .HasColumnType("char(16)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+
+                entity.Property(e => e.NamaPemilikRumah)
+                    .HasColumnName("NamaPemilikRumah")
+                    .HasColumnType("varchar(150)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+
+                entity.Property(e => e.TenorKPR)
+                    .HasColumnName("TenorKPR")
+                    .HasColumnType("int")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+
+                entity.Property(e => e.NoSuratDomisili)
+                    .HasColumnName("NoSuratDomisili")
+                    .HasColumnType("char(20)")
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_general_ci");
 

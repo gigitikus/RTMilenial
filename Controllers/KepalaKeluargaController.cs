@@ -30,18 +30,49 @@ namespace RTMilenial.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateKK(KepalaKeluarga kepalaKeluarga)
+        public ActionResult CreateKK(VwAlamatKepalaKeluarga vwAlamatKepalaKeluarga)
         {
             if(ModelState.IsValid)
             {
-                kepalaKeluarga.AuditUserName = "AdminUser";
-                kepalaKeluarga.AuditTime = DateTime.Now;
-                kepalaKeluarga.AuditActivity = "I";
-                db.KepalaKeluarga.Add(kepalaKeluarga);
+                KepalaKeluarga kk = new KepalaKeluarga();
+                AlamatKK akk = new AlamatKK();
+                
+                kk.Alamat = vwAlamatKepalaKeluarga.Alamat;
+                kk.AuditActivity = "I";
+                kk.AuditTime = DateTime.Now;
+                kk.AuditUserName = "AdminUser";
+                kk.DesaKelurahan = vwAlamatKepalaKeluarga.DesaKelurahan;
+                kk.KabupatenKota = vwAlamatKepalaKeluarga.KabupatenKota;
+                kk.Kecamatan = vwAlamatKepalaKeluarga.Kecamatan;
+                kk.KodePos = vwAlamatKepalaKeluarga.KodePos;
+                kk.NamaKk = vwAlamatKepalaKeluarga.NamaKk;
+                kk.NIK = vwAlamatKepalaKeluarga.NIK;
+                kk.NoKk = vwAlamatKepalaKeluarga.NoKk;
+                kk.Provinsi = vwAlamatKepalaKeluarga.Provinsi;
+                kk.Rtrw = vwAlamatKepalaKeluarga.RtRw;
+                
+                akk.AuditActivity = "I";
+                akk.AuditTime = DateTime.Now;
+                akk.AuditUserName = "AdminUser";
+                akk.BlokNoId = vwAlamatKepalaKeluarga.BlokNoId;
+                akk.NamaPemilikRumah = vwAlamatKepalaKeluarga.NamaPemilikRumah;
+                akk.NIKPemilikRumah = vwAlamatKepalaKeluarga.NIKPemilikRumah;
+                akk.NoKk = vwAlamatKepalaKeluarga.NoKk;
+                akk.NoSuratDomisili = vwAlamatKepalaKeluarga.NoSuratDomisili;
+                akk.StatusHuniId = vwAlamatKepalaKeluarga.StatusHuniId;
+                akk.TanggalHabisHuni = vwAlamatKepalaKeluarga.TanggalHabisHuni;
+                akk.TanggalHuni = vwAlamatKepalaKeluarga.TanggalHuni;
+                akk.TenorKPR = vwAlamatKepalaKeluarga.TenorKPR;
+
+                db.KepalaKeluarga.Add(kk);
                 db.SaveChanges();
+
+                db.AlamatKK.Add(akk);
+                db.SaveChanges();
+
                 return RedirectToAction("FetchKepalaKeluarga", "KepalaKeluarga");
             }
-            return View("CreateKepalaKeluarga", kepalaKeluarga);
+            return View("CreateKepalaKeluarga", vwAlamatKepalaKeluarga);
         }
 
         [HttpPost]

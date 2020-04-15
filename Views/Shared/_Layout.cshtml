@@ -195,17 +195,12 @@
 </script>
 <script type="text/javascript">
   $(document).ready(function() {
-    $.validator.setDefaults({
-      submitHandler: function() {
-        alert("Form succesful submitted!");
-      }
-    });
     $('#AgtKeluargaForm').validate({
       rules: {
         NamaLengkap: {
           required: true
         },
-        Nik: {
+        NIK: {
           required: true
         },
         TempatLahir: {
@@ -241,7 +236,7 @@
         NoKk: {
           required: true
         },
-        NamaKK: {
+        NamaKk: {
           required: true
         },
         Alamat: {
@@ -264,13 +259,22 @@
         },
         Kecamatan: {
           required: true
+        },
+        BlokNoId: {
+          required: true
+        },
+        StatusHuniId: {
+          required: true
+        },
+        TenorKPR: {
+          required: true
         }
       },
       messages: {
         NamaLengkap: {
           required: "Nama lengkap tidak boleh kosong"
         },
-        Nik: {
+        NIK: {
           required: "NIK tidak boleh kosong"
         },
         TempatLahir: {
@@ -306,7 +310,7 @@
         NoKk: {
           required: "No. Kartu Keluarga tidak boleh kosong"
         },
-        NamaKK: {
+        NamaKk: {
           required: "Nama Kepala Keluarga tidak boleh kosong"
         },
         Alamat: {
@@ -329,6 +333,15 @@
         },
         Kecamatan: {
           required: "Kecamatan tidak boleh kosong"
+        },
+        BlokNoId: {
+          required: "Kamu belum pilih no rumah"
+        },
+        StatusHuniId: {
+          required: "Kamu belum pilih status huni"
+        },
+        TenorKPR: {
+          required: "Tenor KPR tidak boleh kosong"
         }
       },
       errorElement: 'span',
