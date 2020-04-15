@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using RTMilenial.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace RTMilenial.Controllers
 {
@@ -21,6 +22,14 @@ namespace RTMilenial.Controllers
 
         public ActionResult CreateKepalaKeluarga()
         {
+            Task<List<SelectItemList>> t1 = Task<List<MasterBlokNo>>.Run(() => {
+                return getMasterBlokNo();
+            });
+
+            Task.WaitAll(t1);
+
+            ViewBag.lsStatusHuni = t1.Result;
+
             return View();
         }
         public KepalaKeluargaController(ILogger<KepalaKeluargaController> logger)
@@ -64,11 +73,23 @@ namespace RTMilenial.Controllers
                 akk.TanggalHuni = vwAlamatKepalaKeluarga.TanggalHuni;
                 akk.TenorKPR = vwAlamatKepalaKeluarga.TenorKPR;
 
-                db.KepalaKeluarga.Add(kk);
-                db.SaveChanges();
+                using (var transaction = db.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        db.KepalaKeluarga.Add(kk);
+                        db.SaveChanges();
 
-                db.AlamatKK.Add(akk);
-                db.SaveChanges();
+                        db.AlamatKK.Add(akk);
+                        db.SaveChanges();
+
+                        transaction.Commit();
+                    }
+                    catch (System.Exception)
+                    {
+                        transaction.Rollback();
+                    }
+                }
 
                 return RedirectToAction("FetchKepalaKeluarga", "KepalaKeluarga");
             }
@@ -116,5 +137,26 @@ namespace RTMilenial.Controllers
             return RedirectToAction("KepalaKeluarga", "KepalaKeluargas");
         }
         
+        public async Task<List<SelectItemList>> getMasterBlokNo()
+        {
+            List<SelectItemList> selectItemLists = new List<SelectItemList>();
+            List<MasterBlokNo> ma = new List<MasterBlokNo>();
+
+            using (var dataContext = new MyDbContext())
+            {
+                ma = await dataContext.MasterBlokNo.OrderBy(s => s.Blok).ThenBy(s => s.BlokNo).ThenBy(s => s.NoRumah).ToListAsync();
+            }
+
+            foreach(var item in ma)
+            {
+                selectItemLists.Add(new SelectItemList{SelectValueMember = item.BlokNoId,
+                SelectDisplayMember = item.Blok + item.BlokNo + "/" + item.NoRumah});
+            }
+
+            selectItemLists.Insert(0, new SelectItemList{SelectValueMember = "", 
+            SelectDisplayMember = "Pilih Blok / No."});
+            
+            return selectItemLists;
+        }
     }
 }

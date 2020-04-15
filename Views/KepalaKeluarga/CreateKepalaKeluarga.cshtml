@@ -141,9 +141,10 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="BlokNoId">Blok / No.</label>
-                                <input type="text" name="BlokNoId" class="form-control" 
-                                id="BlokNoId"
-                                placeholder="Blok / No.">
+                                @Html.DropDownListFor(model => model.BlokNoId, 
+                                new SelectList(ViewBag.lsStatusHuni, "SelectValueMember", "SelectDisplayMember"),
+                                new {@class="form-control select2",
+                                @name="BlokNoId", @id="BlokNoId"})
                             </div>
                             <div class="form-group">
                                 <label for="StatusHuniId">Status Huni</label>
