@@ -9,12 +9,12 @@
 <div class="container-fluid">
 <div class="row mb-2">
     <div class="col-sm-6">
-    <h1>Data Kepala Keluarga</h1>
+    <h1>Data Kartu Keluarga</h1>
     </div>
     <div class="col-sm-6">
     <ol class="breadcrumb float-sm-right">
         <li class="breadcrumb-item"><a href="#">Beranda</a></li>
-        <li class="breadcrumb-item active">Kepala Keluarga</li>
+        <li class="breadcrumb-item active">Kartu Keluarga</li>
     </ol>
     </div>
 </div>
@@ -27,7 +27,7 @@
     <div class="card card-primary card-outline">
         <div class="card-header">
             <button type="button" onclick="location.href='@Url.Action("CreateKepalaKeluarga", "KepalaKeluarga")'" 
-            class="btn btn-success btn-sm">Tambah Kepala Keluarga</button>
+            class="btn btn-success btn-sm">Tambah Kartu Keluarga</button>
             <div class="card-tools">
                 <div class="input-group input-group-sm">
                     <input type="text" class="form-control" placeholder="Search">
@@ -46,9 +46,8 @@
             <thead>
             <tr>
                 <th>No. KK</th>
-                <th>NIK</th>
-                <th>Nama KK</th>
-                <th>Alamat</th>
+                <th>Nama Kepala Keluarga</th>
+                <th>Alamat KK</th>
                 <th>RT/RW</th>
                 <th>Desa/Kelurahan</th>
                 <th>Kecamatan</th>
@@ -63,7 +62,6 @@
                 {
                     <tr>
                         <td>@Html.DisplayFor(modelItem => item.NoKk)</td>
-                        <td>@Html.DisplayFor(modelItem => item.NIK)</td>
                         <td>@Html.DisplayFor(modelItem => item.NamaKk)</td>
                         <td>@Html.DisplayFor(modelItem => item.Alamat)</td>
                         <td>@Html.DisplayFor(modelItem => item.Rtrw)</td>

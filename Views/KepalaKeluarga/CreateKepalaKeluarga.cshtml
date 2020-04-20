@@ -9,12 +9,12 @@
 <div class="container-fluid">
 <div class="row mb-2">
     <div class="col-sm-6">
-    <h1>Tambah Kepala Keluarga</h1>
+    <h1>Tambah Kartu Keluarga</h1>
     </div>
     <div class="col-sm-6">
     <ol class="breadcrumb float-sm-right">
         <li class="breadcrumb-item"><a href="#">Beranda</a></li>
-        <li class="breadcrumb-item active">Tambah Kepala Keluarga</li>
+        <li class="breadcrumb-item active">Tambah Kartu Keluarga</li>
     </ol>
     </div>
 </div>
@@ -49,14 +49,7 @@
                                 id="NoKk"
                                 placeholder="No. Kartu Keluarga">
                             </div>
-                            <div class="form-group">
-                                <label for="Nik">NIK</label>
-                                <input type="text" name="NIK" class="form-control" 
-                                id="NIK"
-                                placeholder="NIK">
-                                @* @Html.EditorFor(model => model.NIK, new { htmlAttributes = new {@class = "form-control"}})
-                                <span asp-validation-for="NIK" class="text-danger" style="font-size: small;"></span> *@
-                            </div>
+                           
                             <div class="form-group">
                                 <label for="NamaKK">Nama Kepala Keluarga</label>
                                 <input type="text" name="NamaKk" class="form-control" 
@@ -81,8 +74,6 @@
                                 @* @Html.EditorFor(model => model.Rtrw, new { htmlAttributes = new {@class = "form-control"}})
                                 <span asp-validation-for="Rtrw" class="text-danger" style="font-size: small;"></span> *@
                             </div>
-                        </div>
-                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="DesaKelurahan">Desa / Kelurahan</label>
                                 <input type="text" name="DesaKelurahan" class="form-control" 
@@ -91,6 +82,8 @@
                                 @* @Html.EditorFor(model => model.DesaKelurahan, new { htmlAttributes = new {@class = "form-control"}})
                                 <span asp-validation-for="DesaKelurahan" class="text-danger" style="font-size: small;"></span> *@
                             </div>
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="Kecamatan">Kecamatan</label>
                                 <input type="text" name="Kecamatan" class="form-control" 
@@ -142,15 +135,19 @@
                             <div class="form-group">
                                 <label for="BlokNoId">Blok / No.</label>
                                 @Html.DropDownListFor(model => model.BlokNoId, 
-                                new SelectList(ViewBag.lsStatusHuni, "SelectValueMember", "SelectDisplayMember"),
+                                new SelectList(ViewBag.lsBlokNo, "SelectValueMember", "SelectDisplayMember"),
                                 new {@class="form-control select2",
                                 @name="BlokNoId", @id="BlokNoId"})
                             </div>
                             <div class="form-group">
                                 <label for="StatusHuniId">Status Huni</label>
-                                <input type="text" name="StatusHuniId" class="form-control" 
+                                @Html.DropDownListFor(model => model.BlokNoId, 
+                                new SelectList(ViewBag.lsStatusHuni, "StatusHuniValue", "StatusHuniDisplay"),
+                                new {@class="form-control select2",
+                                @name="StatusHuniId", @id="StatusHuniId"})
+                                @* <input type="text" name="StatusHuniId" class="form-control" 
                                 id="StatusHuniId"
-                                placeholder="Status Huni">
+                                placeholder="Status Huni"> *@
                             </div>
                             <div class="form-group">
                                 <label for="TanggalHuni">Tanggal Huni</label>

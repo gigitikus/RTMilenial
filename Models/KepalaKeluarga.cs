@@ -13,8 +13,6 @@ namespace RTMilenial.Models
 
         [Required(ErrorMessage = "No. KK tidak boleh kosong")]
         public string NoKk { get; set; }
-        [Required(ErrorMessage = "No. NIK tidak boleh kosong")]
-        public string NIK {get;set;}
         [Required(ErrorMessage = "Nama KK tidak boleh kosong")]
         public string NamaKk { get; set; }
         [Required(ErrorMessage = "Alamat tidak boleh kosong")]

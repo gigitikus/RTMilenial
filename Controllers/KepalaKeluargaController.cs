@@ -22,13 +22,18 @@ namespace RTMilenial.Controllers
 
         public ActionResult CreateKepalaKeluarga()
         {
+            List<StatusHuni> statusHunis = new List<StatusHuni>();
+            statusHunis.Add(new StatusHuni{StatusHuniValue = "TTP", StatusHuniDisplay = "Tetap"});
+            statusHunis.Add(new StatusHuni{StatusHuniValue = "KTR", StatusHuniDisplay = "Kontrak"});
+
             Task<List<SelectItemList>> t1 = Task<List<MasterBlokNo>>.Run(() => {
                 return getMasterBlokNo();
             });
 
             Task.WaitAll(t1);
 
-            ViewBag.lsStatusHuni = t1.Result;
+            ViewBag.lsBlokNo = t1.Result;
+            ViewBag.lsStatusHuni = statusHunis;
 
             return View();
         }
@@ -55,7 +60,6 @@ namespace RTMilenial.Controllers
                 kk.Kecamatan = vwAlamatKepalaKeluarga.Kecamatan;
                 kk.KodePos = vwAlamatKepalaKeluarga.KodePos;
                 kk.NamaKk = vwAlamatKepalaKeluarga.NamaKk;
-                kk.NIK = vwAlamatKepalaKeluarga.NIK;
                 kk.NoKk = vwAlamatKepalaKeluarga.NoKk;
                 kk.Provinsi = vwAlamatKepalaKeluarga.Provinsi;
                 kk.Rtrw = vwAlamatKepalaKeluarga.RtRw;
@@ -158,5 +162,6 @@ namespace RTMilenial.Controllers
             
             return selectItemLists;
         }
+
     }
 }

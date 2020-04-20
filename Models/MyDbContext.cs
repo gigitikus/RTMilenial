@@ -164,13 +164,7 @@ namespace RTMilenial.Models
             {
                 entity.HasKey(e => e.NoKk)
                     .HasName("PRIMARY");
-
-                entity.Property(e => e.NIK)
-                    .HasColumnName("NIK")
-                    .HasColumnType("char(16)")
-                    .HasCharSet("utf8mb4")
-                    .HasCollation("utf8mb4_general_ci");
-
+                    
                 entity.Property(e => e.NoKk)
                     .HasColumnName("NoKK")
                     .HasColumnType("char(16)")

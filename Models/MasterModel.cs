@@ -9,6 +9,12 @@ namespace RTMilenial.Models
         public string JenisKelaminDisplay {get;set;}
     }
 
+    public class StatusHuni
+    {
+        public string StatusHuniValue {get;set;}
+        public string StatusHuniDisplay {get;set;}
+    }
+
     public class Kewarganegaraan
     {
         public string KewarganegaraanValue {get;set;}
