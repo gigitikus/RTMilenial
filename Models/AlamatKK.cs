@@ -7,7 +7,7 @@ namespace RTMilenial.Models
     public partial class AlamatKK
     {
         public string NoKk { get; set; }
-        public string BlokNoId { get; set; }
+        public string BlokNoRumah { get; set; }
         public string StatusHuniId {get;set;}
         public DateTime TanggalHuni {get;set;}
         public DateTime TanggalHabisHuni {get;set;}

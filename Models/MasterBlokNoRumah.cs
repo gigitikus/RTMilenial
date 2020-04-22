@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RTMilenial.Models
 {
-    public partial class MasterBlokNo
+    public partial class MasterBlokNoRumah
     {
-        public string BlokNoId {get;set;}
+        public string BlokNoRumah {get;set;}
         public string Blok {get;set;}
         public int BlokNo {get;set;}
         public int NoRumah {get;set;}

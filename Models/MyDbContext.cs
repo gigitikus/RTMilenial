@@ -23,7 +23,7 @@ namespace RTMilenial.Models
         public virtual DbSet<MasterJenisPekerjaan> MasterJenisPekerjaan {get;set;}
         public virtual DbSet<MasterStatusPerkawinan> MasterStatusPerkawinan {get;set;}
         public virtual DbSet<AlamatKK> AlamatKK {get;set;}
-        public virtual DbSet<MasterBlokNo> MasterBlokNo {get;set;}
+        public virtual DbSet<MasterBlokNoRumah> MasterBlokNoRumah {get;set;}
         public virtual DbSet<MasterJalan> MasterJalan {get;set;}
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -450,17 +450,14 @@ namespace RTMilenial.Models
                 entity.HasKey(e => e.NoKk)
                 .HasName("PRIMARY");
 
-                entity.HasKey(e => e.BlokNoId)
-                .HasName("PRIMARY");
-
                 entity.Property(e => e.NoKk)
                     .HasColumnName("NoKk")
                     .HasColumnType("char(16)")
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_general_ci");
 
-                entity.Property(e => e.BlokNoId)
-                    .HasColumnName("BlokNoId")
+                entity.Property(e => e.BlokNoRumah)
+                    .HasColumnName("BlokNoRumah")
                     .HasColumnType("char(6)")
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_general_ci");
@@ -525,13 +522,13 @@ namespace RTMilenial.Models
                     .HasCollation("utf8mb4_general_ci");
             });
 
-            modelBuilder.Entity<MasterBlokNo>(entity => 
+            modelBuilder.Entity<MasterBlokNoRumah>(entity => 
             {
-                entity.HasKey(e => e.BlokNoId)
+                entity.HasKey(e => e.BlokNoRumah)
                 .HasName("PRIMARY");
 
-                entity.Property(e => e.BlokNoId)
-                    .HasColumnName("BlokNoId")
+                entity.Property(e => e.BlokNoRumah)
+                    .HasColumnName("BlokNoRumah")
                     .HasColumnType("char(6)")
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_general_ci");
@@ -554,6 +551,9 @@ namespace RTMilenial.Models
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_general_ci");
 
+                entity.HasKey(e => e.NoRumah)
+                .HasName("PRIMARY");
+                
                 entity.Property(e => e.NoRumah)
                     .HasColumnName("NoRumah")
                     .HasColumnType("int")

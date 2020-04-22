@@ -87,16 +87,25 @@ namespace RTMilenial.Controllers
                 akk.AuditActivity = "I";
                 akk.AuditTime = DateTime.Now;
                 akk.AuditUserName = "AdminUser";
-                akk.BlokNoId = vwAlamatKepalaKeluarga.BlokNoId;
+                akk.BlokNoRumah = vwAlamatKepalaKeluarga.BlokNoRumah;
                 akk.NamaPemilikRumah = vwAlamatKepalaKeluarga.NamaPemilikRumah;
                 akk.NIKPemilikRumah = vwAlamatKepalaKeluarga.NIKPemilikRumah;
                 akk.NoKk = vwAlamatKepalaKeluarga.NoKk;
                 akk.NoSuratDomisili = vwAlamatKepalaKeluarga.NoSuratDomisili;
                 akk.StatusHuniId = vwAlamatKepalaKeluarga.StatusHuniId;
-                akk.TanggalHabisHuni = vwAlamatKepalaKeluarga.TanggalHabisHuni;
-                akk.TanggalHuni = vwAlamatKepalaKeluarga.TanggalHuni;
-                akk.TenorKPR = vwAlamatKepalaKeluarga.TenorKPR;
 
+                if(vwAlamatKepalaKeluarga.TanggalHuni == null)
+                {
+                    akk.TanggalHabisHuni = DateTime.MinValue;
+                }
+
+                if(vwAlamatKepalaKeluarga.TanggalHabisHuni == null)
+                {
+                    akk.TanggalHuni = DateTime.MinValue;
+                }
+                
+                akk.TenorKPR = vwAlamatKepalaKeluarga.TenorKPR;
+                
                 using (var transaction = db.Database.BeginTransaction())
                 {
                     try
@@ -109,9 +118,10 @@ namespace RTMilenial.Controllers
 
                         transaction.Commit();
                     }
-                    catch (System.Exception)
+                    catch (Exception ex)
                     {
                         transaction.Rollback();
+                        throw new Exception(ex.Message);
                     }
                 }
 
@@ -164,16 +174,16 @@ namespace RTMilenial.Controllers
         public async Task<List<SelectItemList>> getMasterBlokNo()
         {
             List<SelectItemList> selectItemLists = new List<SelectItemList>();
-            List<MasterBlokNo> ma = new List<MasterBlokNo>();
+            List<MasterBlokNoRumah> ma = new List<MasterBlokNoRumah>();
 
             using (var dataContext = new MyDbContext())
             {
-                ma = await dataContext.MasterBlokNo.OrderBy(s => s.Blok).ThenBy(s => s.BlokNo).ThenBy(s => s.NoRumah).ToListAsync();
+                ma = await dataContext.MasterBlokNoRumah.OrderBy(s => s.Blok).ThenBy(s => s.BlokNo).ThenBy(s => s.NoRumah).ToListAsync();
             }
 
             foreach(var item in ma)
             {
-                selectItemLists.Add(new SelectItemList{SelectValueMember = item.BlokNoId,
+                selectItemLists.Add(new SelectItemList{SelectValueMember = item.BlokNoRumah,
                 SelectDisplayMember = item.Blok + item.BlokNo + "/" + item.NoRumah});
             }
 
@@ -207,22 +217,21 @@ namespace RTMilenial.Controllers
 
         public JsonResult GetBlokNoRumah(string jalanId)
         {
-            List<MasterBlokNo> blokNos = db.MasterBlokNo.Where(x => x.JalanId == jalanId.Trim())
-            .OrderBy(x => x.Blok).ThenBy(x => x.BlokNo).ThenBy(x => x.NoRumah).ToList();
+            List<MasterBlokNoRumah> blokNos = db.MasterBlokNoRumah.Where(x => x.JalanId.Trim() == jalanId.Trim()).ToList();
 
             List<SelectItemList> selectItemLists = new List<SelectItemList>();
             foreach (var item in blokNos)
             {
-                selectItemLists.Add(new SelectItemList{SelectValueMember = item.BlokNoId,
+                selectItemLists.Add(new SelectItemList{SelectValueMember = item.BlokNoRumah,
                 SelectDisplayMember = item.Blok + item.BlokNo + "/" + item.NoRumah});
             }
 
-            var Result = from item in selectItemLists 
+            var Result = (from item in selectItemLists 
                             select new 
                             {
                                 value = item.SelectValueMember,
                                 text = item.SelectDisplayMember
-                            };
+                            }).ToList();
 
             return Json(Result);
         }

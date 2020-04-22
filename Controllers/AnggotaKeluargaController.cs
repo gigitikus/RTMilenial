@@ -81,8 +81,20 @@ namespace RTMilenial.Controllers
         {
             KepalaKeluarga kk = db.KepalaKeluarga.Where(s => s.NoKk == anggotaKeluarga.NoKk.Trim()).FirstOrDefault();
 
+            int noUrut = db.AnggotaKeluarga.Where(x => x.NoKk == anggotaKeluarga.NoKk).Max(x => x.NoUrut);
+
+            if(noUrut == 0)
+            {
+                noUrut = 1;
+            }
+            else
+            {
+                noUrut = noUrut + 1;
+            }
+
             if(ModelState.IsValid)
             {
+                anggotaKeluarga.NoUrut = noUrut;
                 anggotaKeluarga.AuditActivity = "I";
                 anggotaKeluarga.AuditTime = DateTime.Now;
                 anggotaKeluarga.AuditUserName = "AdminUser";
