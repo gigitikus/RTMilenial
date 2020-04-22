@@ -16,6 +16,7 @@ namespace RTMilenial.Models
         public string KabupatenKota { get; set; }
         public string KodePos { get; set; }
         public string Provinsi { get; set; }
+        public string JalanId {get;set;}
         public string BlokNoId { get; set; }
         public string StatusHuniId {get;set;}
         public DateTime TanggalHuni {get;set;}

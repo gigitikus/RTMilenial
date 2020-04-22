@@ -26,13 +26,18 @@ namespace RTMilenial.Controllers
             statusHunis.Add(new StatusHuni{StatusHuniValue = "TTP", StatusHuniDisplay = "Tetap"});
             statusHunis.Add(new StatusHuni{StatusHuniValue = "KTR", StatusHuniDisplay = "Kontrak"});
 
-            Task<List<SelectItemList>> t1 = Task<List<MasterBlokNo>>.Run(() => {
+            Task<List<SelectItemList>> t1 = Task<List<SelectItemList>>.Run(() => {
                 return getMasterBlokNo();
             });
 
-            Task.WaitAll(t1);
+            Task<List<SelectItemList>> t2 = Task<List<SelectItemList>>.Run(() => {
+                return getMasterJalan();
+            });
+
+            Task.WaitAll(t1, t2);
 
             ViewBag.lsBlokNo = t1.Result;
+            ViewBag.lsNamaJalan = t2.Result;
             ViewBag.lsStatusHuni = statusHunis;
 
             return View();
@@ -159,6 +164,28 @@ namespace RTMilenial.Controllers
 
             selectItemLists.Insert(0, new SelectItemList{SelectValueMember = "", 
             SelectDisplayMember = "Pilih Blok / No."});
+            
+            return selectItemLists;
+        }
+
+        public async Task<List<SelectItemList>> getMasterJalan()
+        {
+            List<SelectItemList> selectItemLists = new List<SelectItemList>();
+            List<MasterJalan> ma = new List<MasterJalan>();
+
+            using (var dataContext = new MyDbContext())
+            {
+                ma = await dataContext.MasterJalan.OrderBy(s => s.OrderNo).ToListAsync();
+            }
+
+            foreach(var item in ma)
+            {
+                selectItemLists.Add(new SelectItemList{SelectValueMember = item.JalanId,
+                SelectDisplayMember = item.NamaJalan});
+            }
+
+            selectItemLists.Insert(0, new SelectItemList{SelectValueMember = "", 
+            SelectDisplayMember = "Pilih Nama Jalan"});
             
             return selectItemLists;
         }

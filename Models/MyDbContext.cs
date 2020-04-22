@@ -24,6 +24,7 @@ namespace RTMilenial.Models
         public virtual DbSet<MasterStatusPerkawinan> MasterStatusPerkawinan {get;set;}
         public virtual DbSet<AlamatKK> AlamatKK {get;set;}
         public virtual DbSet<MasterBlokNo> MasterBlokNo {get;set;}
+        public virtual DbSet<MasterJalan> MasterJalan {get;set;}
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -562,6 +563,47 @@ namespace RTMilenial.Models
                 entity.Property(e => e.JalanId)
                     .HasColumnName("JalanId")
                     .HasColumnType("char(6)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+
+                entity.Property(e => e.AuditActivity)
+                    .IsRequired()
+                    .HasColumnType("char(1)")
+                    .HasDefaultValueSql("'I'")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+
+                entity.Property(e => e.AuditTime)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("'current_timestamp()'");
+
+                entity.Property(e => e.AuditUserName)
+                    .IsRequired()
+                    .HasColumnType("varchar(255)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+            });
+
+            modelBuilder.Entity<MasterJalan>(entity => 
+            {
+                entity.HasKey(e => e.JalanId)
+                .HasName("PRIMARY");
+
+                entity.Property(e => e.JalanId)
+                    .HasColumnName("JalanId")
+                    .HasColumnType("char(6)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+
+                entity.Property(e => e.NamaJalan)
+                    .HasColumnName("NamaJalan")
+                    .HasColumnType("varchar(200)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+
+                entity.Property(e => e.OrderNo)
+                    .HasColumnName("OrderNo")
+                    .HasColumnType("int")
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_general_ci");
 
