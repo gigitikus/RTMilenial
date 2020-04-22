@@ -26,17 +26,32 @@ namespace RTMilenial.Controllers
             statusHunis.Add(new StatusHuni{StatusHuniValue = "TTP", StatusHuniDisplay = "Tetap"});
             statusHunis.Add(new StatusHuni{StatusHuniValue = "KTR", StatusHuniDisplay = "Kontrak"});
 
-            Task<List<SelectItemList>> t1 = Task<List<SelectItemList>>.Run(() => {
-                return getMasterBlokNo();
-            });
+            // Task<List<SelectItemList>> t1 = Task<List<SelectItemList>>.Run(() => {
+            //     return getMasterBlokNo();
+            // });
 
             Task<List<SelectItemList>> t2 = Task<List<SelectItemList>>.Run(() => {
                 return getMasterJalan();
             });
 
-            Task.WaitAll(t1, t2);
+            Task.WaitAll(t2);
 
-            ViewBag.lsBlokNo = t1.Result;
+            /*
+            List<SelectItemList> blokNos = new List<SelectItemList>();
+            if(!string.IsNullOrEmpty(jalanId))
+            {
+                var BlokNoIds = db.MasterBlokNo.Where(x => x.JalanId == jalanId.Trim())
+                .OrderBy(x => x.Blok).ThenBy(x => x.BlokNo).ThenBy(x => x.NoRumah).ToList();
+
+                foreach(var item in BlokNoIds)
+                {
+                    blokNos.Add(new SelectItemList{SelectValueMember = item.BlokNoId,
+                    SelectDisplayMember = item.Blok + item.BlokNo + "/" + item.NoRumah});
+                }
+            }
+            */
+
+            //ViewBag.lsBlokNo = blokNos;
             ViewBag.lsNamaJalan = t2.Result;
             ViewBag.lsStatusHuni = statusHunis;
 
@@ -190,5 +205,26 @@ namespace RTMilenial.Controllers
             return selectItemLists;
         }
 
+        public JsonResult GetBlokNoRumah(string jalanId)
+        {
+            List<MasterBlokNo> blokNos = db.MasterBlokNo.Where(x => x.JalanId == jalanId.Trim())
+            .OrderBy(x => x.Blok).ThenBy(x => x.BlokNo).ThenBy(x => x.NoRumah).ToList();
+
+            List<SelectItemList> selectItemLists = new List<SelectItemList>();
+            foreach (var item in blokNos)
+            {
+                selectItemLists.Add(new SelectItemList{SelectValueMember = item.BlokNoId,
+                SelectDisplayMember = item.Blok + item.BlokNo + "/" + item.NoRumah});
+            }
+
+            var Result = from item in selectItemLists 
+                            select new 
+                            {
+                                value = item.SelectValueMember,
+                                text = item.SelectDisplayMember
+                            };
+
+            return Json(Result);
+        }
     }
 }
