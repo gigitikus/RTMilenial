@@ -9,7 +9,7 @@
 <div class="container-fluid">
 <div class="row mb-2">
     <div class="col-sm-6">
-    <h1>Tambah Anggota Keluarga : @ViewBag.namaKK</h1>
+    <h5>Tambah Anggota Keluarga : @ViewBag.namaKK</h5>
     </div>
     <div class="col-sm-6">
     <ol class="breadcrumb float-sm-right">
@@ -111,7 +111,9 @@
                     </div>
                     <div class="form-group">
                         <label for="TanggalLahir">Tanggal Lahir</label>
-                        
+                        @Html.TextBoxFor(m => m.TanggalLahir, "{0:dd/MM/yyyy", 
+                        new {@class = "form-control", @type = "date"})
+                        @*                       
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
@@ -124,11 +126,9 @@
                             name="TanggalLahir"
                             id="TanggalLahir"
                             data-mask>
-                            @* @Html.EditorFor(model => model.TanggalLahir, new { htmlAttributes = new {@class = "form-control", 
-                            @PlaceHolder = "dd-mm-yyyy", 
-                            @type = "text"
-                            }})     *@
+                             
                         </div>
+                        *@
                         @* <span asp-validation-for="TanggalLahir" class="text-danger" style="font-size: small;"></span> *@
                     </div>
                 </div>

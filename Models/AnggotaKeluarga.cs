@@ -17,8 +17,10 @@ namespace RTMilenial.Models
         public string JenisKelamin { get; set; }
         [Required(ErrorMessage = "Tempat Lahir tidak boleh kosong")]
         public string TempatLahir { get; set; }
+
         [Required(ErrorMessage = "Tanggal Lahir tidak boleh kosong")]
-        [DisplayFormat(DataFormatString = "{0:dd/mm/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy", ApplyFormatInEditMode = true)]
         public DateTime TanggalLahir {get;set;}
         [Required(ErrorMessage = "Kamu belum memilih Agama")]
         public string Agama { get; set; }

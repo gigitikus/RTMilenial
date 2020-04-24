@@ -1,4 +1,4 @@
-@model IEnumerable<RTMilenial.Models.KepalaKeluarga>
+@model IEnumerable<RTMilenial.Models.FetchAlamatKK>
 @{
     ViewData["Title"] = "Kepala Keluarga";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -54,6 +54,8 @@
                 <th>Kabupaten/Kota</th>
                 <th>KodePos</th>
                 <th>Provinsi</th>
+                <th>No. Rumah</th>
+                <th>Nama Jalan</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -61,21 +63,26 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@Html.DisplayFor(modelItem => item.NoKk)</td>
-                        <td>@Html.DisplayFor(modelItem => item.NamaKk)</td>
+                        <td>@Html.DisplayFor(modelItem => item.NoKK)</td>
+                        <td>@Html.DisplayFor(modelItem => item.NamaKK)</td>
                         <td>@Html.DisplayFor(modelItem => item.Alamat)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Rtrw)</td>
+                        <td>@Html.DisplayFor(modelItem => item.RTRW)</td>
                         <td>@Html.DisplayFor(modelItem => item.DesaKelurahan)</td>
                         <td>@Html.DisplayFor(modelItem => item.Kecamatan)</td>
                         <td>@Html.DisplayFor(modelItem => item.KabupatenKota)</td>
                         <td>@Html.DisplayFor(modelItem => item.KodePos)</td>
                         <td>@Html.DisplayFor(modelItem => item.Provinsi)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Blok) 
+                            @Html.DisplayFor(modelItem => item.BlokNo) / 
+                            @Html.DisplayFor(modelItem => item.NoRumah)
+                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.NamaJalan)</td>
                         <td>
                             <div class="mailbox-controls">
                                 <button type="button" class="btn btn-default btn-sm"><i class="fas fa-edit"></i></button>
                                 <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
                                 <button type="button" 
-                                onclick="location.href='@Url.Action("CreateAnggotaKeluarga", "AnggotaKeluarga", new {NoKK = @item.NoKk, NamaKK = @item.NamaKk})'"
+                                onclick="location.href='@Url.Action("CreateAnggotaKeluarga", "AnggotaKeluarga", new {NoKK = @item.NoKK, NamaKK = @item.NamaKK})'"
                                 class="btn btn-default btn-sm"><i class="fas fa-user-plus"></i></button>            
                             </div>
                         </td>

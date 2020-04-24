@@ -48,7 +48,7 @@
             aria-haspopup="true" aria-expanded="false" 
             class="nav-link dropdown-toggle">Warga</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              <li><a href="@Url.Action("FetchKepalaKeluarga", "KepalaKeluarga")" class="dropdown-item" >Kepala Keluarga</a></li>
+              <li><a href="@Url.Action("FetchKepalaKeluarga", "KepalaKeluarga")" class="dropdown-item" >Kartu Keluarga</a></li>
               <li><a href="@Url.Action("FetchAnggotaKeluarga", "AnggotaKeluarga")" class="dropdown-item">Anggota Keluarga</a></li>
             </ul>
           </li>
@@ -194,6 +194,22 @@
         $('[data-mask').inputmask()
     })
 </script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#TanggalLahir').datepicker({
+            dateFormat: "dd/mm/yyyy",
+            showStatus: true,
+            showWeeks: true,
+            currentText: 'Now',
+            autoSize: true,
+            gotoCurrent: true,
+            showAnim: 'blind',
+            highlightWeek: true
+        });
+    });
+</script>
+
 <script type="text/javascript">
   $(document).ready(function() {
     $('#AgtKeluargaForm').validate({
