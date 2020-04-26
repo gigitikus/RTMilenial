@@ -23,7 +23,7 @@
 <div class="container-fluid">
 <div class="row mb-2">
     <div class="col-sm-6">
-    <h1>Tambah Kartu Keluarga</h1>
+    <h5>Tambah Kartu Keluarga</h5>
     </div>
     <div class="col-sm-6">
     <ol class="breadcrumb float-sm-right">
@@ -174,15 +174,19 @@
                             </div>
                             <div class="form-group">
                                 <label for="TanggalHuni">Tanggal Huni</label>
-                                <input type="text" name="TanggalHuni" class="form-control" 
+                                @Html.TextBoxFor(m => m.TanggalHuni, "{0:dd/MM/yyyy", 
+                                new {@class = "form-control", @type = "date"})
+                                @* <input type="text" name="TanggalHuni" class="form-control" 
                                 id="TanggalHuni"
-                                placeholder="Tanggal Huni">
+                                placeholder="Tanggal Huni"> *@
                             </div>
                             <div class="form-group">
                                 <label for="TanggalHabisHuni">Tanggal Habis Huni</label>
-                                <input type="text" name="TanggalHabisHuni" class="form-control" 
+                                @Html.TextBoxFor(m => m.TanggalHabisHuni, "{0:dd/MM/yyyy", 
+                        new {@class = "form-control", @type = "date"})
+                                @* <input type="text" name="TanggalHabisHuni" class="form-control" 
                                 id="TanggalHabisHuni"
-                                placeholder="Tanggal Habis Huni">
+                                placeholder="Tanggal Habis Huni"> *@
                             </div>
                         </div>
                         <div class="col-md-6">

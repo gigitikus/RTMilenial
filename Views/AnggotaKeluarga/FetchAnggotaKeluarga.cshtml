@@ -51,8 +51,7 @@
                                 <th>Tempat Lahir</th>
                                 <th>Tanggal Lahir</th>
                                 <th>Agama</th>
-                                <th>Pendidikan</th>
-                                <th>Pekerjaan</th>
+                                <th>Hubungan Keluarga</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -68,8 +67,7 @@
                                     <td>@Html.DisplayFor(model => item.TempatLahir)</td>
                                     <td>@Convert.ToDateTime(item.TanggalLahir).ToString("dd-MM-yyyy")</td>
                                     <td>@Html.DisplayFor(model => item.Agama)</td>
-                                    <td>@Html.DisplayFor(model => item.Pendidikan)</td>
-                                    <td>@Html.DisplayFor(model => item.JenisPekerjaan)</td>
+                                    <td>@Html.DisplayFor(model => item.HubunganDalamKeluarga)</td>
                                     <td>
                                         <div class="mailbox-controls">
                                             <button type="button" class="btn btn-default btn-sm"><i class="fas fa-edit"></i></button>
