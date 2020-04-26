@@ -35,21 +35,51 @@ namespace RTMilenial.Controllers
 
             Task.WaitAll(t1,t2, t3);
 
-            var tcountAnak = (from ca in t3.Result
+            var tcountAges = (from ca in t3.Result
                             select new {
                                 Age = DateTime.Now.Year - ca.TanggalLahir.Year
                             }).ToList();
 
-            int CountAnak = (from c in tcountAnak
+            int CountAnak = (from c in tcountAges
                             .Where(x => x.Age >= 5 && x.Age < 12)
+                            select c).ToList().Count;  
+
+            int CountBalita = (from c in tcountAges
+                            .Where(x => x.Age < 5)
                             select c).ToList().Count;          
 
+            int CountRemaja = (from c in tcountAges
+                            .Where(x => x.Age >= 12 && x.Age < 18)
+                            select c).ToList().Count;  
+
+            int CountIslam = (from c in t3.Result
+                            .Where(x => x.Agama == "ISLAM")
+                            select c).ToList().Count;  
+
+            int CountKhatolik = (from c in t3.Result
+                            .Where(x => x.Agama == "KHATOLIK")
+                            select c).ToList().Count; 
+
+            int CountProtestan = (from c in t3.Result
+                            .Where(x => x.Agama == "PROTESTAN")
+                            select c).ToList().Count;   
+
+            int CountBudha = (from c in t3.Result
+                            .Where(x => x.Agama == "BUDHA")
+                            select c).ToList().Count;  
+            
 
             ViewBag.CountKK = t1.Result;
             ViewBag.CountAngKK = t2.Result;
             ViewBag.TotalWarga = t1.Result + t2.Result;
             ViewBag.CountAnak = CountAnak;
-
+            ViewBag.CountBalita = CountBalita;
+            ViewBag.CountRemaja = CountRemaja;
+            ViewBag.CountIslam = CountIslam;
+            ViewBag.CountKhatolik = CountKhatolik;
+            ViewBag.CountProtestan = CountProtestan;
+            ViewBag.CountBudha = CountBudha;
+            
             return View();
         }
 
