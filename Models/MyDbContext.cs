@@ -25,6 +25,7 @@ namespace RTMilenial.Models
         public virtual DbSet<AlamatKK> AlamatKK {get;set;}
         public virtual DbSet<MasterBlokNoRumah> MasterBlokNoRumah {get;set;}
         public virtual DbSet<MasterJalan> MasterJalan {get;set;}
+        public virtual DbSet<KordinatorJalan> KordinatorJalan {get;set;}
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -623,6 +624,53 @@ namespace RTMilenial.Models
                     .HasColumnType("varchar(255)")
                     .HasCharSet("utf8mb4")
                     .HasCollation("utf8mb4_general_ci");
+            });
+
+            modelBuilder.Entity<KordinatorJalan>(entity => {
+                entity.HasKey(e => e.JalanId)
+                .HasName("PRIMARY");
+
+                entity.Property(e => e.JalanId)
+                    .HasColumnName("JalanId")
+                    .HasColumnType("char(6)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+
+                entity.Property(e => e.NIK)
+                    .HasColumnName("NIK")
+                    .HasColumnType("char(16)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+
+                entity.Property(e => e.Status)
+                    .HasColumnName("Status")
+                    .HasColumnType("bool")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+
+                entity.Property(e => e.MasaJabatan)
+                    .HasColumnName("MasaJabatan")
+                    .HasColumnType("datetime")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+
+                entity.Property(e => e.AuditActivity)
+                    .IsRequired()
+                    .HasColumnType("char(1)")
+                    .HasDefaultValueSql("'I'")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+
+                entity.Property(e => e.AuditTime)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("'current_timestamp()'");
+
+                entity.Property(e => e.AuditUserName)
+                    .IsRequired()
+                    .HasColumnType("varchar(255)")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+
             });
 
             OnModelCreatingPartial(modelBuilder);

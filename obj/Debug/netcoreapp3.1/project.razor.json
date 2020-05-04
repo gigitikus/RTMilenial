@@ -20589,6 +20589,11 @@
       "FilePath": "/home/nandakapol/Project/GitRepo/RTMilenial/Views/Shared/_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/nandakapol/Project/GitRepo/RTMilenial/Views/JalanKordinator/FetchJalanKordinator.cshtml",
+      "TargetPath": "Views\\JalanKordinator\\FetchJalanKordinator.cshtml",
+      "FileKind": "mvc"
     }
   ],
   "SerializationFormat": "0.2"
