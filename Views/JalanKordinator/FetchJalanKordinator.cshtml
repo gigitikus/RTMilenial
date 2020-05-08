@@ -1,0 +1,86 @@
+@model IEnumerable<RTMilenial.Models.VwKordinatorJalan>
+    {
+        ViewData["Title"] = "Kordinator Jalan";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+<div class="container-fluid">
+<div class="row mb-2">
+    <div class="col-sm-6">
+    <h5>Data Kordinator Jalan</h5>
+    </div>
+    <div class="col-sm-6">
+    <ol class="breadcrumb float-sm-right">
+        <li class="breadcrumb-item"><a href="#">Beranda</a></li>
+        <li class="breadcrumb-item active">Kordinator Jalan</li>
+    </ol>
+    </div>
+</div>
+</div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <div class="card-tools">
+                        <div class="input-group input-group-sm">
+                            <input type="text" class="form-control" placeholder="Search">
+                            <div class="input-group-append">
+                                <div class="btn btn-primary">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table id="example2" class="table table-responsive table-hover" 
+                    style="font-size: small;">
+                        <thead>
+                            <tr>
+                                <th>Jalan Id</th>
+                                <th>Nama Jalan</th>
+                                <th>Nama Kordinator</th>
+                                <th>Masa Jabatan</th>
+                                <th>Total Unit</th>
+                                <th>Unit Terisi</th>
+                                <th>Jumlah KK</th>
+                                <th>Huni Tetap</th>
+                                <th>Huni Kontrak</th>
+                                <th>Jumlah Warga</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(model => item.JalanId)</td>
+                                    <td>@Html.DisplayFor(model => item.NamaJalan)</td>
+                                    <td>@Html.DisplayFor(model => item.NamaKordinator)</td>
+                                    <td>@Html.DisplayFor(model => item.MasaJabatan)</td>
+                                    <td>@Html.DisplayFor(model => item.TotalUnit)</td>
+                                    <td>@Html.DisplayFor(model => item.UnitTerisi)</td>
+                                    <td>@Html.DisplayFor(model => item.JumlahKK)</td>
+                                    <td>@Html.DisplayFor(model => item.HuniTetap)</td>
+                                    <td>@Html.DisplayFor(model => item.HuniKontrak)</td>
+                                    <td>@Html.DisplayFor(model => item.JumlahWarga)</td>
+                                    <td>
+                                        <div class="mailbox-controls">
+                                            <button type="button" class="btn btn-default btn-sm"><i class="fas fa-edit"></i></button>
+                                            <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
+                                            <button type="button" class="btn btn-default btn-sm"><i class="fas fa-search"></i></button>            
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
